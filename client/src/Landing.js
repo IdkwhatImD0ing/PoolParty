@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography} from '@mui/material';
+import {Box, Typography, Stack, Button} from '@mui/material';
 
 export default function Landing() {
   return (
@@ -15,7 +15,16 @@ export default function Landing() {
           backgroundColor: 'lightblue',
         }}
       >
-        <Typography variant="h1">Pool Party</Typography>
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          spacing={2}
+        >
+          <Typography variant="h1">Pool Party</Typography>
+          <Typography variant="h3">Ride Sharing made easy</Typography>
+          <Button>Get Started!</Button>
+        </Stack>
       </Box>
     </>
   );
