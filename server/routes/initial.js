@@ -4,7 +4,6 @@ const createInitialState = (name, destination, date) => {
     destination: destination,
     date: date,
     drivers: {},
-    passengers: {},
   };
 
   return obj;

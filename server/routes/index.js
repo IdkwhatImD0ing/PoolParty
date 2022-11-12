@@ -57,4 +57,41 @@ router.get('/createTrip', async (req, res) => {
   res.json({message: 'Successfully Generated Lobby!', channelId: channelId});
 });
 
+router.get('/joinDriver', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+  const groupName = req.get('groupName');
+  const make = req.get('make');
+  const color = req.get('color');
+  const capacity = req.get('capacity');
+  const contact = req.get('contact');
+
+  const driverState = getDriverState(
+    name,
+    groupName,
+    make,
+    color,
+    capacity,
+    contact,
+  );
+
+  hop.patchState(channelId, {drivers: {}});
+  res.json({message: 'Successfully Joined as Driver!', channelId: channelId});
+});
+
+router.get('/joinPassenger', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+  const contact = req.get('contact');
+  const driver = req.get('driver');
+
+  const passengerState = getPassengerState(name, contact);
+
+  hop.patchState(channelId, {passengers: {}});
+  res.json({
+    message: 'Successfully Joined as Passenger!',
+    channelId: channelId,
+  });
+});
+
 module.exports = router;
