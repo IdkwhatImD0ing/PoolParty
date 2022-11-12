@@ -15,6 +15,7 @@ const getInitialDriver = (name, groupName, make, color, capacity, contact) => {
     make: make,
     color: color,
     capacity: capacity,
+    remainingCapacity: capacity,
     contact: contact,
     passengers: {},
   };
