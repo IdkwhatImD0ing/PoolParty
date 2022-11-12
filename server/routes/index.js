@@ -54,7 +54,7 @@ router.get('/createTrip', async (req, res) => {
       state: tripState,
     },
   );
-  res.json({message: 'Successfully Generated Lobby!', channelId: channelId});
+  res.json({message: 'Successfully Generated Trip!', channelId: channelId});
 });
 
 router.get('/joinDriver', async (req, res) => {
@@ -75,6 +75,7 @@ router.get('/joinDriver', async (req, res) => {
     contact,
   );
   const channel = await hop.channels.get(`${channelId}`);
+
   hop.patchState(channelId, {drivers: {...channel.state.drivers, driverState}});
   res.json({message: 'Successfully Joined as Driver!', channelId: channelId});
 });
@@ -95,6 +96,7 @@ router.get('/joinPassenger', async (req, res) => {
   driverState[driver].remainingCapacity =
     driverState[driver].remainingCapacity - 1;
   hop.patchState(channelId, {drivers: driverState});
+
   res.json({
     message: 'Successfully Joined as Passenger!',
     channelId: channelId,
