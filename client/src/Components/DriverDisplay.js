@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function DriverDisplay(props) {
-  // Drivers object would be an object containing a list of drivers
+  // Dictionary of driver objects
   const driversObject = props.drivers;
   return (
     <div>
