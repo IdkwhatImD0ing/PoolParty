@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Box, Typography, Stack, Button, Modal, Toolbar } from "@mui/material";
 import PassengerDisplay from "./Components/PassengerDisplay";
@@ -8,6 +9,17 @@ import CarDisplay from "./Components/CarDisplay";
 import AddDriver from "./Components/AddDriver";
 import { useSearchParams } from "react-router-dom";
 import { useReadChannelState } from "@onehop/react";
+=======
+import React, {useState} from 'react';
+import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
+import AddPassenger from './Components/AddPassenger';
+import Error from './Components/Error';
+import CarDisplay from './Components/CarDisplay';
+import CombinedDisplay from './Components/CombinedDisplay';
+import AddDriver from './Components/AddDriver';
+import {useSearchParams} from 'react-router-dom';
+import {useReadChannelState} from '@onehop/react';
+>>>>>>> main
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
@@ -110,10 +122,18 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={2}
           >
+<<<<<<< HEAD
             {state.drivers && <DriverDisplay drivers={state.drivers} />}
             {state.freePassengers && (
               <PassengerDisplay passengers={state.freePassengers} />
             )}
+=======
+            <CombinedDisplay
+              drivers={state.drivers}
+              passengers={state.freePassengers}
+              channelId={tripId}
+            />
+>>>>>>> main
           </Stack>
           {state.drivers &&
             Object.entries(state.drivers).map(([name, driverObject]) => {
