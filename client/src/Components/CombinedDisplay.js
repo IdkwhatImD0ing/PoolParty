@@ -14,13 +14,21 @@ import {
   Typography,
 } from '@mui/material';
 
-
 export default function DriverDisplay(props) {
   const drivers = props.drivers;
   const passengers = props.passengers;
 
   const getIconColor = (driver) => {
     return driver['remainingCapacity'] > 0 ? 'success.main' : 'error.main';
+  };
+
+  const handleSubmit = (passengerUUID) => {
+    fetch('http://localhost:3001/removePassenger', {
+      headers: {
+        channelId: props.channelId,
+        passengerUUID: passengerUUID,
+      },
+    });
   };
 
   return (
@@ -35,42 +43,42 @@ export default function DriverDisplay(props) {
         padding: '2%',
       }}
     >
-    {drivers && (
-      <>
-        <ListSubheader
-          component="div"
-          id="nested-list-subheader"
-          sx={{borderRadius: '16px'}}
-        >
-          <Typography variant="h6">Drivers</Typography>
-        </ListSubheader>
-        {Object.entries(drivers).map(([name, driver]) => {
-          return (
-            <ListItem
-              key={name}
-              secondaryAction={
-                <IconButton>
-                  <AddIcon />
-                </IconButton>
-              }
-            >
-              <ListItemIcon sx={{color: getIconColor(driver)}}>
-                <CircleIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary={`${driver['name']}`}
-                secondary={`${driver['remainingCapacity']} seats available`}
-                edge="start"
-              />
-            </ListItem>
-          );
-        })}
+      {drivers && (
+        <>
+          <ListSubheader
+            component="div"
+            id="nested-list-subheader"
+            sx={{borderRadius: '16px'}}
+          >
+            <Typography variant="h6">Drivers</Typography>
+          </ListSubheader>
+          {Object.entries(drivers).map(([name, driver]) => {
+            return (
+              <ListItem
+                key={name}
+                secondaryAction={
+                  <IconButton>
+                    <AddIcon />
+                  </IconButton>
+                }
+              >
+                <ListItemIcon sx={{color: getIconColor(driver)}}>
+                  <CircleIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={`${driver['name']}`}
+                  secondary={`${driver['remainingCapacity']} seats available`}
+                  edge="start"
+                />
+              </ListItem>
+            );
+          })}
         </>
       )}
-      {drivers && passengers && <Divider/>}
+      {drivers && passengers && <Divider />}
       {passengers && (
         <>
-        <ListSubheader
+          <ListSubheader
             component="div"
             id="nested-list-subheader"
             sx={{borderRadius: '16px'}}
@@ -82,7 +90,11 @@ export default function DriverDisplay(props) {
               <ListItem
                 key={name}
                 secondaryAction={
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      handleSubmit(name);
+                    }}
+                  >
                     <RemoveIcon />
                   </IconButton>
                 }

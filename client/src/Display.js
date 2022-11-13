@@ -30,7 +30,7 @@ export default function DisplayTrip() {
       <Box
         height="100vh"
         weight="100vw"
-        overflow='auto'
+        overflow="auto"
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -99,13 +99,18 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={2}
           >
-            <CombinedDisplay drivers={state.drivers} passengers={state.freePassengers}/>
+            <CombinedDisplay
+              drivers={state.drivers}
+              passengers={state.freePassengers}
+              channelId={tripId}
+            />
           </Stack>
-          {state.drivers && Object.entries(state.drivers).map(([name, driverObject]) => {
-            return (<CarDisplay driver={driverObject} />);
-          })}
+          {state.drivers &&
+            Object.entries(state.drivers).map(([name, driverObject]) => {
+              return <CarDisplay driver={driverObject} />;
+            })}
           {/* Toolbar to make space at bottom of screen */}
-          <Toolbar/> 
+          <Toolbar />
         </Stack>
       </Box>
     </>
