@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import CreateTrip from './CreateTrip';
 
 function App() {
-  return <CreateTrip />;
+  return <Landing />;
 }
 
 export default App;
