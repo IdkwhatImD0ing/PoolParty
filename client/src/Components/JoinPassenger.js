@@ -40,7 +40,9 @@ export default function JoinPassenger(props) {
         borderRadius: '16px',
       }}
     >
-      <Typography variant="h3">Add Passenger</Typography>
+      <Typography variant="h3" align="center">
+        Add Passenger
+      </Typography>
       <TextField
         id="passengerName"
         label="Name"
