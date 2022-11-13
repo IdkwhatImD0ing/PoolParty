@@ -26,6 +26,7 @@ export default function DisplayTrip() {
   const [passengerOpen2, setPassengerOpen2] = useState(false);
   const [driverUUID, setDriverUUID] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarOpenClipboard, setSnackbarOpenClipboard] = useState(false);
   const handleDriverOpen = () => setDriverOpen(true);
   const handleDriverClose = () => setDriverOpen(false);
   const handlePassengerOpen = () => setPassengerOpen(true);
@@ -39,6 +40,10 @@ export default function DisplayTrip() {
   const handleSnackbarClose = () => setSnackbarOpen(false);
 
   const handleSnackbarOpen = () => setSnackbarOpen(true);
+
+  const handleSnackbarCloseClipboard = () => setSnackbarOpenClipboard(false);
+
+  const handleSnackbarOpenClipboard = () => setSnackbarOpenClipboard(true);
 
   const formatDate = (date) => {
     const dateObj = new Date(date);
@@ -96,6 +101,20 @@ export default function DisplayTrip() {
             sx={{width: '100%'}}
           >
             Successfully Added
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+          open={snackbarOpenClipboard}
+          onClose={handleSnackbarCloseClipboard}
+          autoHideDuration={3000}
+        >
+          <Alert
+            onClose={handleSnackbarCloseClipboard}
+            severity="success"
+            sx={{width: '100%'}}
+          >
+            Copied Link to Clipboard
           </Alert>
         </Snackbar>
         <Modal
@@ -188,6 +207,7 @@ export default function DisplayTrip() {
               sx={{bgcolor: 'divider', color: 'text.primary', borderRadius: '12px'}}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
+                handleSnackbarOpenClipboard();
               }}>
               Copy Link
             </Button>
