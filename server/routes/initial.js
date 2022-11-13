@@ -17,6 +17,7 @@ const getInitialDriver = (
   capacity,
   contact,
   pickup,
+  driverUUID
 ) => {
   const obj = {
     name: name,
@@ -28,15 +29,17 @@ const getInitialDriver = (
     contact: contact,
     passengers: {},
     pickup: pickup,
+    uuid: driverUUID,
   };
 
   return obj;
 };
 
-const getInitialPassenger = (name, contact) => {
+const getInitialPassenger = (name, contact, passengerUUID) => {
   const obj = {
     name: name,
     contact: contact,
+    uuid: passengerUUID,
   };
 
   return obj;
