@@ -5,9 +5,19 @@ import AddPassenger from './Components/AddPassenger';
 import Error from './Components/Error';
 import DriverDisplay from './Components/DriverDisplay';
 import AddDriver from './Components/AddDriver';
+import {useSearchParams} from 'react-router-dom';
+import {useReadChannelState} from '@onehop/react';
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tripId = searchParams.get('tripId');
+  const {state} = useReadChannelState(tripId);
+
+  if (!tripId || !state) {
+    return <Error />;
+  }
+
   return (
     <>
       <Box

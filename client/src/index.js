@@ -5,6 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ThemeProvider} from '@mui/material/styles';
 import {themeOptions} from './Components/theme';
+import {hop} from '@onehop/client';
+
+hop.init({
+  projectId: 'project_NzYwNjA2NzQwMzEzMzM0NTA',
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
