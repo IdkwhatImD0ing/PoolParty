@@ -71,7 +71,7 @@ export default function DisplayTrip() {
               align="center"
               sx={{fontWeight: 'bold', fontSize: '80px'}}
             >
-              "GraceHacks {state.name}" on {state.date}
+              "{state.name}" on {state.date}
             </Typography>
           )}
 
