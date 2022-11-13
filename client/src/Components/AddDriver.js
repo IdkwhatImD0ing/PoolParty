@@ -59,7 +59,10 @@ export default function AddDriver(props) {
       <Typography variant="h3" align="center">
         Add Driver
       </Typography>
-      <Grid container rowSpacing={2} columnSpacing={{xs: 1, sm: 2, md: 2}}>
+      <Grid container
+        rowSpacing={2}
+        columnSpacing={{xs: 1, sm: 2, md: 2}}
+        >
         <Grid item xs={6}>
           <TextField
             id="driverName"
@@ -82,21 +85,21 @@ export default function AddDriver(props) {
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="driverPickup"
-            label="Pickup Location"
+            id="groupName"
+            label="Group Name"
             variant="outlined"
-            value={driverPickup}
-            onChange={(e) => setDriverPickup(e.target.value)}
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
             fullWidth
           />
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="color"
-            label="Car Color"
+            id="driverPickup"
+            label="Pickup Location"
             variant="outlined"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
+            value={driverPickup}
+            onChange={(e) => setDriverPickup(e.target.value)}
             fullWidth
           />
         </Grid>
@@ -112,11 +115,11 @@ export default function AddDriver(props) {
         </Grid>
         <Grid item xs={6}>
           <TextField
-            id="groupName"
-            label="Group Name"
+            id="color"
+            label="Car Color"
             variant="outlined"
-            value={groupName}
-            onChange={(e) => setGroupName(e.target.value)}
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
             fullWidth
           />
         </Grid>
