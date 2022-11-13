@@ -36,6 +36,7 @@ export default function JoinPassenger(props) {
         backgroundColor: "white",
         transform: "translate(-50%, -50%)",
         padding: "2%",
+        borderRadius: "16px",
       }}
     >
       <Typography variant="h3">Add a Passenger</Typography>
@@ -53,7 +54,7 @@ export default function JoinPassenger(props) {
         value={passengerContact}
         onChange={(e) => setPassengerContact(e.target.value)}
       />
-      <Button onClick={handleSubmit}>Add</Button>
+      <Button onClick={handleSubmit} variant="contained">Add</Button>
     </Stack>
   );
 }
