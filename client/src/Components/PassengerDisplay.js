@@ -1,12 +1,8 @@
 import React from 'react';
-import {Box, Typography, Stack, Button, TextField} from '@mui/material';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import {List, ListItem, ListItemText, Box, Typography, Stack, Button, TextField, ListSubheader} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import AddIcon from '@mui/icons-material/Add';
-import ListSubheader from '@mui/material/ListSubheader';
 
 const makeTestPassengers = () => {
   return ({
@@ -18,8 +14,8 @@ const makeTestPassengers = () => {
 
 export default function PassengerDisplay(props) {
   // Dictionary  of passenger objects
-  // const passengers = props.passengers;
-  const passengers = makeTestPassengers();
+  const passengers = props.passengers;
+  // const passengers = makeTestPassengers();
 
   /*
   passenger object
