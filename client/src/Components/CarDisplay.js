@@ -84,7 +84,6 @@ export default function CarDisplay(props) {
         </ListItemIcon>
         <ListItemText
           primary={driver.name}
-          primaryTypographyProps={{variant: 'h8'}}
           secondary={driver.contact}
         />
       </ListItem>
@@ -94,7 +93,6 @@ export default function CarDisplay(props) {
         </ListItemIcon>
         <ListItemText
           primary={driver.pickup}
-          primaryTypographyProps={{variant: 'h8'}}
           secondary={'Pickup'}
         />
       </ListItem>
