@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-import { Box, Typography, Stack, Button, TextField } from "@mui/material";
+import { Box, Typography, Stack, Button, Modal } from "@mui/material";
 import PassengerDisplay from "./Components/PassengerDisplay";
 import AddPassenger from "./Components/AddPassenger";
 import Error from "./Components/Error";
@@ -8,27 +7,10 @@ import DriverDisplay from "./Components/DriverDisplay";
 import AddDriver from "./Components/AddDriver";
 import { useSearchParams } from "react-router-dom";
 import { useReadChannelState } from "@onehop/react";
-import { fontSize } from "@mui/system";
-=======
-import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, Modal} from '@mui/material';
-import PassengerDisplay from './Components/PassengerDisplay';
-import AddPassenger from './Components/AddPassenger';
-import Error from './Components/Error';
-import DriverDisplay from './Components/DriverDisplay';
-import AddDriver from './Components/AddDriver';
-import {useSearchParams} from 'react-router-dom';
-import {useReadChannelState} from '@onehop/react';
->>>>>>> main
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-<<<<<<< HEAD
-  const tripId = searchParams.get("tripId");
-  const { state } = useReadChannelState(tripId);
-  console.log(state);
-=======
   const [driverOpen, setDriverOpen] = useState(false);
   const [passengerOpen, setPassengerOpen] = useState(false);
   const handleDriverOpen = () => setDriverOpen(true);
@@ -36,9 +18,10 @@ export default function DisplayTrip() {
   const handlePassengerOpen = () => setPassengerOpen(true);
   const handlePassengerClose = () => setPassengerOpen(false);
 
-  const tripId = searchParams.get('tripId');
-  const {state} = useReadChannelState(tripId);
->>>>>>> main
+  const tripId = searchParams.get("tripId");
+  const { state } = useReadChannelState(tripId);
+
+  // temp
 
   if (!tripId || !state) {
     return <Error />;
@@ -108,14 +91,8 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={5}
           >
-<<<<<<< HEAD
-            <Button variant="contained">I'm a Driver</Button>
-
-            <Button variant="contained">I'm a Passenger</Button>
-=======
             <Button onClick={handleDriverOpen}>Add Driver</Button>
             <Button onClick={handlePassengerOpen}>Add Passenger</Button>
->>>>>>> main
           </Stack>
           <Stack
             direction="row"
