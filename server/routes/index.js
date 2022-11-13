@@ -106,7 +106,7 @@ router.get('/joinPassenger', async (req, res) => {
 
   const passengerState = getInitialPassenger(name, contact, passengerUUID);
   const channel = await hop.channels.get(`${channelId}`);
-  const driverState = structuredClone(channel.state.drivers);
+  const driverState = JSON.parse(JSON.stringify(channel.state.drivers));
 
   driverState[driverUUID].passengers = {
     ...driverState[driverUUID].passengers,
@@ -150,7 +150,9 @@ router.get('/removePassenger', async (req, res) => {
   const passengerUUID = req.get('passengerUUID');
 
   const channel = await hop.channels.get(`${channelId}`);
-  const freePassengerState = structuredClone(channel.state.freePassengers);
+  const freePassengerState = JSON.parse(
+    JSON.stringify(channel.state.freePassengers),
+  );
   delete freePassengerState[passengerUUID];
 
   hop.channels.patchState(channelId, {freePassengers: freePassengerState});
@@ -167,7 +169,7 @@ router.get('/removeFromCar', async (req, res) => {
   const passengerUUID = req.get('passengerUUID');
 
   const channel = await hop.channels.get(`${channelId}`);
-  const driverState = structuredClone(channel.state.drivers);
+  const driverState = JSON.parse(JSON.stringify(channel.state.drivers));
 
   delete driverState[driverUUID].passengers[passengerUUID];
   driverState[driverUUID].remainingCapacity =
@@ -186,11 +188,11 @@ router.get('/removeDriver', async (req, res) => {
   const driverUUID = req.get('driverUUID');
 
   const channel = await hop.channels.get(`${channelId}`);
-  const driverState = structuredClone(channel.state.drivers);
+  const driverState = JSON.parse(JSON.stringify(channel.state.drivers));
 
   //Move all driver passengers to free passengers
   const freePassengerState = {
-    ...structuredClone(channel.state.freePassengers),
+    ...JSON.parse(JSON.stringify(channel.state.freePassengers)),
     ...driverState[driverUUID].passengers,
   };
 
