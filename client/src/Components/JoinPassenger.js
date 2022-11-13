@@ -36,24 +36,25 @@ export default function JoinPassenger(props) {
         backgroundColor: "white",
         transform: "translate(-50%, -50%)",
         padding: "2%",
+        borderRadius: "16px",
       }}
     >
       <Typography variant="h3">Add a Passenger</Typography>
       <TextField
         id="passengerName"
-        label="Passenger Name"
+        label="Name"
         variant="outlined"
         value={passengerName}
         onChange={(e) => setPassengerName(e.target.value)}
       />
       <TextField
         id="passengerContact"
-        label="Passenger Contact"
+        label="Contact"
         variant="outlined"
         value={passengerContact}
         onChange={(e) => setPassengerContact(e.target.value)}
       />
-      <Button onClick={handleSubmit}>Add</Button>
+      <Button onClick={handleSubmit} variant="contained">Add</Button>
     </Stack>
   );
 }

@@ -49,6 +49,10 @@ export default function DisplayTrip() {
     return `${month} ${day}, ${year}`;
   };
 
+  const objectNotEmpty = (obj) => {
+    return Object.keys(obj).length > 0;
+  }
+
   if (!tripId || !state) {
     return <Error />;
   }
@@ -123,15 +127,31 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={5}
           >
-            <Button onClick={handleDriverOpen}>Add Driver</Button>
-            <Button onClick={handlePassengerOpen}>Add Passenger</Button>
+            <Button onClick={handleDriverOpen}
+            variant="contained"
+            sx={{
+              minWidth: '150px',
+              padding: '3%',
+              borderRadius: '12px',
+            }}
+            >
+              Add Driver</Button>
+            <Button onClick={handlePassengerOpen}
+            variant="contained"
+            sx={{
+              minWidth: '150px',
+              padding: '3%',
+              borderRadius: '12px',
+            }}
+            >
+              Add Passenger</Button>
           </Stack>
           <Stack
             direction="row"
             alignItems="center"
             justifyContent="center"
             spacing={2}
-          >
+          >{(objectNotEmpty(state.drivers) || objectNotEmpty(state.freePassengers)) &&
             <CombinedDisplay
               drivers={state.drivers}
               passengers={state.freePassengers}
@@ -139,6 +159,7 @@ export default function DisplayTrip() {
               setDriverUUID={setDriverUUID}
               handleOpen={handlePassengerOpen2}
             />
+          }
           </Stack>
           {state.drivers &&
             Object.entries(state.drivers).map(([name, driverObject]) => {

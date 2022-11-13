@@ -59,6 +59,7 @@ export default function AddDriver(props) {
         backgroundColor: "white",
         transform: "translate(-50%, -50%)",
         padding: "2%",
+        borderRadius: '16px',
       }}
     >
       <Typography variant="h3">Add a Driver</Typography>
@@ -66,7 +67,7 @@ export default function AddDriver(props) {
         <Grid item xs={6}>
           <TextField
             id="driverName"
-            label="Driver Name"
+            label="Name"
             variant="outlined"
             value={driverName}
             onChange={(e) => setDriverName(e.target.value)}
@@ -76,7 +77,7 @@ export default function AddDriver(props) {
         <Grid item xs={6}>
           <TextField
             id="driverContact"
-            label="Driver Contact"
+            label="Contact"
             variant="outlined"
             value={driverContact}
             onChange={(e) => setDriverContact(e.target.value)}
@@ -87,7 +88,7 @@ export default function AddDriver(props) {
         <Grid item xs={6}>
           <TextField
             id="driverPickup"
-            label="Driver Pickup Location"
+            label="Pickup Location"
             variant="outlined"
             value={driverPickup}
             onChange={(e) => setDriverPickup(e.target.value)}
@@ -131,7 +132,7 @@ export default function AddDriver(props) {
         <Grid item xs={12}>
           <TextField
             id="seats"
-            label="Number of Seats"
+            label="Number of Available Seats"
             variant="outlined"
             value={seats}
             onChange={(e) => setSeats(e.target.value)}
@@ -140,7 +141,7 @@ export default function AddDriver(props) {
         </Grid>
       </Grid>
 
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button onClick={handleSubmit} variant='contained'>Submit</Button>
     </Stack>
   );
 }

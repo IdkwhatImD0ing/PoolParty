@@ -23,6 +23,14 @@ export default function DriverDisplay(props) {
     return driver['remainingCapacity'] > 0 ? 'success.main' : 'error.main';
   };
 
+  const carNotFull = (driver) => {
+    return driver['remainingCapacity'] > 0;
+  };
+
+  const objectNotEmpty = (obj) => {
+    return Object.keys(obj).length > 0;
+  }
+
   const handleSubmit = (passengerUUID) => {
     fetch('https://poolserver.hop.sh/removePassenger', {
       headers: {
@@ -53,7 +61,7 @@ export default function DriverDisplay(props) {
         padding: '2%',
       }}
     >
-      {drivers && (
+      {objectNotEmpty(drivers) && (
         <>
           <ListSubheader
             component="div"
@@ -66,7 +74,7 @@ export default function DriverDisplay(props) {
             return (
               <ListItem
                 key={name}
-                secondaryAction={
+                secondaryAction={ carNotFull(driver) && (
                   <IconButton
                     onClick={() => {
                       props.setDriverUUID(name);
@@ -75,7 +83,7 @@ export default function DriverDisplay(props) {
                   >
                     <AddIcon />
                   </IconButton>
-                }
+                )}
               >
                 <ListItemIcon sx={{color: getIconColor(driver)}}>
                   <CircleIcon />
@@ -97,8 +105,8 @@ export default function DriverDisplay(props) {
           })}
         </>
       )}
-      {drivers && passengers && <Divider />}
-      {passengers && (
+      {objectNotEmpty(drivers) && objectNotEmpty(passengers) && <Divider />}
+      {objectNotEmpty(passengers) && (
         <>
           <ListSubheader
             component="div"
