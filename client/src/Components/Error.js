@@ -33,11 +33,11 @@ export default function Error() {
           color: 'black',
           fontFamily: 'sans-serif',
           fontSize: '1.5rem',
-          marginTop: '3%',
-          marginBottom: '5%',
-          marginLeft: '8%',
-          marginRight: '8%',
-          padding: '1%',
+          marginTop: '16px',
+          marginBottom: '16px',
+          marginLeft: '16px',
+          marginRight: '16px',
+          padding: '16px',
         }}
       >
         Back to Home
