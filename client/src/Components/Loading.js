@@ -11,12 +11,11 @@ export default function Error() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            height: "100vh",
             backgroundColor: 'lightblue',
           }}
         >
           <Stack direction="column" spacing={4} alignItems="center">
-            <Typography variant="h2">Loading...</Typography>
+            <Typography variant="h2" color="black">Loading...</Typography>
             <CircularProgress sx={{ color: "primary" }} />
           </Stack>
         </Box>
