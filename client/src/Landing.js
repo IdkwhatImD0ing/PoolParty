@@ -41,7 +41,8 @@ export default function Landing() {
               marginBottom: '16px',
               marginLeft: '16px',
               marginRight: '16px',
-              padding: '1%',
+              padding: '3%',
+              borderRadius: '12px',
             }}
           >
             Create an Event
