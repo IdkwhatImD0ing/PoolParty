@@ -1,11 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Typography, Stack, Button, TextField} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
 export default function CreateTrip() {
   const [tripName, setTripName] = useState('');
   const [tripDate, setTripDate] = useState('');
   const [tripDest, setTripDest] = useState('');
-  const [tripDeadline, setTripDeadline] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (tripName === '') {
+      alert('Please enter a trip name');
+      return;
+    }
+
+    console.log('tripDate', tripDate);
+    fetch('http://localhost:3001/createTrip', {
+      headers: {
+        name: tripName,
+        tripDate: tripDate,
+        destination: tripDest,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate(`/display?tripId=${data.channelId}`);
+      });
+  };
   return (
     <>
       <Box
@@ -25,8 +48,9 @@ export default function CreateTrip() {
           justifyContent="center"
           spacing={2}
         >
-          
-          <Typography variant="h1" align='center'>Create a trip</Typography>
+          <Typography variant="h1" align="center">
+            Create a trip
+          </Typography>
           <TextField
             required
             id="tripName"
@@ -50,7 +74,9 @@ export default function CreateTrip() {
             onChange={(e) => setTripDest(e.target.value)}
           />
           <></>
-          <Button variant='contained' >Submit</Button>
+          <Button onClick={handleSubmit} variant="contained">
+            Submit
+          </Button>
         </Stack>
       </Box>
     </>

@@ -37,7 +37,7 @@ export default function DisplayTrip() {
           justifyContent="center"
           spacing={2}
         >
-          <Typography variant="h1">Trip Name</Typography>
+          <Typography variant="h1">Trip Name: {state.name}</Typography>
           <Stack
             direction="row"
             alignItems="center"
