@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography, Stack, Button, TextField} from '@mui/material';
+import {Typography} from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -18,8 +18,8 @@ const makeTestPassengers = () => {
 
 export default function PassengerDisplay(props) {
   // Dictionary  of passenger objects
-  // const passengers = props.passengers;
-  const passengers = makeTestPassengers();
+  const passengers = props.passengers;
+  // const passengers = makeTestPassengers();
 
   /*
   passenger object
