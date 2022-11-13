@@ -42,6 +42,8 @@ export default function AddDriver(props) {
       return;
     }
 
+    //temp
+
     fetch('http://localhost:3001/joinDriver', {
       headers: {
         channelId: props.tripId,
