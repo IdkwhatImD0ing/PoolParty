@@ -15,6 +15,7 @@ import {
   ListSubheader,
   Typography,
   IconButton,
+  Tooltip,
 } from '@mui/material';
 import {Stack} from '@mui/system';
 
@@ -106,13 +107,15 @@ export default function CarDisplay(props) {
                 primary={passenger.name}
                 secondary={passenger.contact ? passenger.contact : ''}
               />
-              <IconButton
-                onClick={() => {
-                  handleSubmit(driver.uuid, name);
-                }}
-              >
-                <RemoveIcon />
-              </IconButton>
+              <Tooltip title="Remove">
+                <IconButton
+                  onClick={() => {
+                    handleSubmit(driver.uuid, name);
+                  }}
+                >
+                  <RemoveIcon />
+                </IconButton>
+              </Tooltip>
             </ListItem>
           );
         })}
