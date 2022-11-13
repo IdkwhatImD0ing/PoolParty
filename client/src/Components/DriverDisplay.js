@@ -27,6 +27,7 @@ export default function DriverDisplay(props) {
             maxWidth: 360,
             bgcolor: 'background.paper',
             borderRadius: '16px',
+            padding: '2%',
           }}
           subheader={
             <ListSubheader
