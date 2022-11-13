@@ -82,7 +82,9 @@ router.get('/joinDriver', async (req, res) => {
   );
   const channel = await hop.channels.get(`${channelId}`);
 
-  hop.patchState(channelId, {drivers: {...channel.state.drivers, driverState}});
+  hop.patchState(channelId, {
+    drivers: {...channel.state.drivers, [name]: driverState},
+  });
   res.json({message: 'Successfully Joined as Driver!', channelId: channelId});
 });
 
@@ -97,7 +99,7 @@ router.get('/joinPassenger', async (req, res) => {
   const driverState = structuredClone(channel.state.drivers);
   driverState[driver].passengers = {
     ...driverState[driver].passengers,
-    passengerState,
+    [name]: passengerState,
   };
   driverState[driver].remainingCapacity =
     driverState[driver].remainingCapacity - 1;
