@@ -132,12 +132,11 @@ router.get("/addPassenger", async (req, res) => {
   const passengerState = getInitialPassenger(name, contact, passengerUUID);
   const channel = await hop.channels.get(`${channelId}`);
 
-  hop.patchState(channelId, {
-    drivers: {
+  hop.channels.patchState(channelId, {
+    freePassengers: {
       ...channel.state.freePassengers,
       [passengerUUID]: passengerState,
     },
-
   });
 
   res.json({
