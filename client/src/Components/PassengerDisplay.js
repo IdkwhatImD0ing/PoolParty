@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 
-import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import ListSubheader from '@mui/material/ListSubheader';
 
 const makeTestPassengers = () => {
@@ -44,7 +44,7 @@ contact:
             key={name}
             secondaryAction={
               <IconButton>
-                <AddIcon/>
+                <RemoveIcon/>
               </IconButton>
             }>
               <ListItemText primary={`${passenger['name']}`} edge='start'/>
