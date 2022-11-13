@@ -152,7 +152,6 @@ router.get("/removePassenger", async (req, res) => {
 
   const channel = await hop.channels.get(`${channelId}`);
   const freePassengerState = structuredClone(channel.state.freePassengers);
-<<<<<<< HEAD
   delete freePassengerState[passengerUUID];
 
   hop.patchState(channelId, { freePassengers: freePassengerState });
@@ -176,10 +175,6 @@ router.get("/removeFromCar:", async (req, res) => {
     driverState[driverUUID].remainingCapacity + 1;
 
   hop.channels.patchState(channelId, { drivers: driverState });
-=======
-  delete freePassengerState[name];
-  hop.channels.patchState(channelId, {freePassengers: freePassengerState});
->>>>>>> main
 
   res.json({
     message: "Successfully Removed Passenger From Car!",
