@@ -62,7 +62,7 @@ export default function AddDriver(props) {
         borderRadius: '16px',
       }}
     >
-      <Typography variant="h3">Add a Driver</Typography>
+      <Typography variant="h3">Add Driver</Typography>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <TextField

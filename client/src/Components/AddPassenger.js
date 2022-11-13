@@ -38,7 +38,7 @@ export default function AddPassenger(props) {
         borderRadius: '16px',
       }}
     >
-      <Typography variant="h3">Add a Passenger</Typography>
+      <Typography variant="h3">Add Passenger</Typography>
       <TextField
         id="passengerName"
         label="Name"
