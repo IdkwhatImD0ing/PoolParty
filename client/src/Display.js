@@ -1,25 +1,13 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { Box, Typography, Stack, Button, Modal, Toolbar } from "@mui/material";
-import PassengerDisplay from "./Components/PassengerDisplay";
 import AddPassenger from "./Components/AddPassenger";
 import Error from "./Components/Error";
-import DriverDisplay from "./Components/DriverDisplay";
 import CarDisplay from "./Components/CarDisplay";
+import CombinedDisplay from "./Components/CombinedDisplay";
 import AddDriver from "./Components/AddDriver";
+import JoinPassenger from "./Components/JoinPassenger";
 import { useSearchParams } from "react-router-dom";
 import { useReadChannelState } from "@onehop/react";
-=======
-import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
-import AddPassenger from './Components/AddPassenger';
-import Error from './Components/Error';
-import CarDisplay from './Components/CarDisplay';
-import CombinedDisplay from './Components/CombinedDisplay';
-import AddDriver from './Components/AddDriver';
-import {useSearchParams} from 'react-router-dom';
-import {useReadChannelState} from '@onehop/react';
->>>>>>> main
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
@@ -27,6 +15,7 @@ export default function DisplayTrip() {
   const [driverOpen, setDriverOpen] = useState(false);
   const [passengerOpen, setPassengerOpen] = useState(false);
   const [passengerOpen2, setPassengerOpen2] = useState(false);
+  const [driverUUID, setDriverUUID] = useState(null);
   const handleDriverOpen = () => setDriverOpen(true);
   const handleDriverClose = () => setDriverOpen(false);
   const handlePassengerOpen = () => setPassengerOpen(true);
@@ -73,7 +62,11 @@ export default function DisplayTrip() {
           onClose={handlePassengerClose2}
           closeAfterTransition
         >
-          <AddPassenger handleClose={handlePassengerClose2} tripId={tripId} />
+          <JoinPassenger
+            handleClose={handlePassengerClose2}
+            tripId={tripId}
+            driverUUID={driverUUID}
+          />
         </Modal>
         <Stack
           direction="column"
@@ -122,22 +115,23 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={2}
           >
-<<<<<<< HEAD
-            {state.drivers && <DriverDisplay drivers={state.drivers} />}
-            {state.freePassengers && (
-              <PassengerDisplay passengers={state.freePassengers} />
-            )}
-=======
             <CombinedDisplay
               drivers={state.drivers}
               passengers={state.freePassengers}
               channelId={tripId}
+              setDriverUUID={setDriverUUID}
+              handleOpen={handlePassengerOpen2}
             />
->>>>>>> main
           </Stack>
           {state.drivers &&
             Object.entries(state.drivers).map(([name, driverObject]) => {
-              return <CarDisplay driver={driverObject} />;
+              return (
+                <CarDisplay
+                  driver={driverObject}
+                  setDriverUUID={setDriverUUID}
+                  handleOpen={handlePassengerOpen2}
+                />
+              );
             })}
           {/* Toolbar to make space at bottom of screen */}
           <Toolbar />
