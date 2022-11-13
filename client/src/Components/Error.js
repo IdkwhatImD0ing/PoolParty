@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, Typography, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
+import Loading from './Loading';
 
 export default function Error() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Error() {
         backgroundColor: 'lightblue',
       }}
     >
+      <Loading/>
       <Typography variant="h1" color="black">
         404
       </Typography>
