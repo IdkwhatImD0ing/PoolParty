@@ -13,6 +13,7 @@ export default function DisplayTrip() {
   const [searchParams, setSearchParams] = useSearchParams();
   const tripId = searchParams.get('tripId');
   const {state} = useReadChannelState(tripId);
+  console.log(state);
 
   if (!tripId || !state) {
     return <Error />;
@@ -42,10 +43,19 @@ export default function DisplayTrip() {
             direction="row"
             alignItems="center"
             justifyContent="center"
+            spacing={5}
+          >
+            <Button>Add Driver</Button>
+            <Button>Add Passenger</Button>
+          </Stack>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
             spacing={2}
           >
-            <DriverDisplay />
-            {driver && <PassengerDisplay />}
+            {state.drivers && <DriverDisplay />}
+            {driver && <PassengerDisplay drivers={state.drivers} />}
           </Stack>
         </Stack>
       </Box>
