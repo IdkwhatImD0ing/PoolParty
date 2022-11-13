@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography, Button} from '@mui/material';
+import {Box, Typography, Button, Stack} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import Loading from './Loading';
 
@@ -18,10 +18,8 @@ export default function Error() {
       }}
     >
       <Loading/>
-      
-      <Typography variant="h5" color="black" sx = {{
-        mt: 3
-      }}>
+      <Typography variant="h5" color="black" sx = {{mt: 3}}
+        align='center'>
         make sure you copied the URL correctly!
       </Typography>
       <Button
@@ -38,6 +36,7 @@ export default function Error() {
           marginLeft: '16px',
           marginRight: '16px',
           padding: '16px',
+          borderRadius: '16px',
         }}
       >
         Back to Home
