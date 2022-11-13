@@ -105,7 +105,7 @@ export default function DisplayTrip() {
         >
           <Typography variant="h4">Coordinate Carpool</Typography>
 
-          <Box>
+          <Stack direction='column' justify='center' borderRadius='16px'>
             <Typography
               variant="h1"
               align="center"
@@ -119,32 +119,41 @@ export default function DisplayTrip() {
                 {formatDate(state.date)}
               </Typography>
             )}
-          </Box>
-
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            spacing={5}
-          >
-            <Button onClick={handleDriverOpen}
-            variant="contained"
-            sx={{
-              minWidth: '150px',
-              padding: '3%',
-              borderRadius: '12px',
-            }}
+            
+          </Stack>
+          <Stack direction='column' spacing={2}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={5}
             >
-              Add Driver</Button>
-            <Button onClick={handlePassengerOpen}
-            variant="contained"
-            sx={{
-              minWidth: '150px',
-              padding: '3%',
-              borderRadius: '12px',
-            }}
-            >
-              Add Passenger</Button>
+              <Button onClick={handleDriverOpen}
+              variant="contained"
+              sx={{
+                minWidth: '150px',
+                padding: '3%',
+                borderRadius: '12px',
+              }}
+              >
+                Add Driver</Button>
+              <Button onClick={handlePassengerOpen}
+              variant="contained"
+              sx={{
+                minWidth: '150px',
+                padding: '3%',
+                borderRadius: '12px',
+              }}
+              >
+                Add Passenger</Button>
+            </Stack>
+            <Button variant='contained' 
+              sx={{bgcolor: 'divider', color: 'text.primary', borderRadius: '12px'}}
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+              }}>
+              Copy Link
+            </Button>
           </Stack>
           <Stack
             direction="row"
