@@ -32,11 +32,10 @@ export default function DisplayTrip() {
         height="100vh"
         weight="100vw"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightblue',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "lightblue",
         }}
       >
         <Modal
@@ -57,9 +56,34 @@ export default function DisplayTrip() {
           direction="column"
           alignItems="center"
           justifyContent="center"
-          spacing={2}
+          spacing={"5vh"}
+          sx={{ mt: "5%" }}
+          maxWidth="98%"
         >
-          <Typography variant="h1">Trip Name: {state.name}</Typography>
+          <Typography variant="h1" align="center">
+            Carpool for
+          </Typography>
+
+          {state.date !== "" && (
+            <Typography
+              variant="h1"
+              align="center"
+              sx={{ fontWeight: "bold", fontSize: "80px" }}
+            >
+              "GraceHacks {state.name}" on {state.date}
+            </Typography>
+          )}
+
+          {state.date === "" && (
+            <Typography
+              variant="h1"
+              align="center"
+              sx={{ fontWeight: "bold", fontSize: "80px" }}
+            >
+              "GraceHacks {state.name}"
+            </Typography>
+          )}
+
           <Stack
             direction="row"
             alignItems="center"

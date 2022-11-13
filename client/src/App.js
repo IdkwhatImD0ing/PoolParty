@@ -3,6 +3,7 @@ import CreateTrip from './CreateTrip';
 import {HashRouter, Routes, Route} from 'react-router-dom';
 import DisplayTrip from './Display';
 import Error from './Components/Error';
+import AddDriver from './Components/AddDriver';
 
 function App() {
   return (
