@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, Modal} from '@mui/material';
+import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
 import PassengerDisplay from './Components/PassengerDisplay';
 import AddPassenger from './Components/AddPassenger';
 import Error from './Components/Error';
@@ -31,6 +31,7 @@ export default function DisplayTrip() {
       <Box
         height="100vh"
         weight="100vw"
+        overflow='auto'
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -105,6 +106,8 @@ export default function DisplayTrip() {
           {state.drivers && Object.entries(state.drivers).map(([name, driverObject]) => {
             return (<CarDisplay driver={driverObject} />);
           })}
+          {/* Toolbar to make space at bottom of screen */}
+          <Toolbar/> 
         </Stack>
       </Box>
     </>
