@@ -29,7 +29,7 @@ const getInitialDriver = (
     contact: contact,
     passengers: {},
     pickup: pickup,
-    driverUUID: driverUUID,
+    uuid: driverUUID,
   };
 
   return obj;
@@ -39,7 +39,7 @@ const getInitialPassenger = (name, contact, passengerUUID) => {
   const obj = {
     name: name,
     contact: contact,
-    passengerUUID: passengerUUID,
+    uuid: passengerUUID,
   };
 
   return obj;
