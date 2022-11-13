@@ -37,6 +37,7 @@ export default function AddDriver(props) {
         pickup: driverPickup,
       },
     });
+    props.onClick();
     props.handleClose();
   };
   return (
@@ -59,10 +60,7 @@ export default function AddDriver(props) {
       <Typography variant="h3" align="center">
         Add Driver
       </Typography>
-      <Grid container
-        rowSpacing={2}
-        columnSpacing={{xs: 1, sm: 2, md: 2}}
-        >
+      <Grid container rowSpacing={2} columnSpacing={{xs: 1, sm: 2, md: 2}}>
         <Grid item xs={6}>
           <TextField
             id="driverName"

@@ -20,6 +20,7 @@ export default function AddPassenger(props) {
         contact: passengerContact,
       },
     });
+    props.onClick();
     props.handleClose();
   };
   return (

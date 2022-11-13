@@ -1,5 +1,14 @@
 import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
+import {
+  Box,
+  Typography,
+  Stack,
+  Button,
+  Modal,
+  Toolbar,
+  Snackbar,
+  Alert,
+} from '@mui/material';
 import AddPassenger from './Components/AddPassenger';
 import Error from './Components/Error';
 import CarDisplay from './Components/CarDisplay';
@@ -16,6 +25,7 @@ export default function DisplayTrip() {
   const [passengerOpen, setPassengerOpen] = useState(false);
   const [passengerOpen2, setPassengerOpen2] = useState(false);
   const [driverUUID, setDriverUUID] = useState(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const handleDriverOpen = () => setDriverOpen(true);
   const handleDriverClose = () => setDriverOpen(false);
   const handlePassengerOpen = () => setPassengerOpen(true);
@@ -25,6 +35,10 @@ export default function DisplayTrip() {
 
   const tripId = searchParams.get('tripId');
   const {state} = useReadChannelState(tripId);
+
+  const handleSnackbarClose = () => setSnackbarOpen(false);
+
+  const handleSnackbarOpen = () => setSnackbarOpen(true);
 
   const formatDate = (date) => {
     const dateObj = new Date(date);
@@ -51,7 +65,7 @@ export default function DisplayTrip() {
 
   const objectNotEmpty = (obj) => {
     return Object.keys(obj).length > 0;
-  }
+  };
 
   if (!tripId || !state) {
     return <Error />;
@@ -70,19 +84,41 @@ export default function DisplayTrip() {
           backgroundColor: 'lightblue',
         }}
       >
+        <Snackbar
+          anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+          open={snackbarOpen}
+          onClose={handleSnackbarClose}
+          autoHideDuration={3000}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{width: '100%'}}
+          >
+            Successfully Added
+          </Alert>
+        </Snackbar>
         <Modal
           open={driverOpen}
           onClose={handleDriverClose}
           closeAfterTransition
         >
-          <AddDriver handleClose={handleDriverClose} tripId={tripId} />
+          <AddDriver
+            handleClose={handleDriverClose}
+            tripId={tripId}
+            onClick={handleSnackbarOpen}
+          />
         </Modal>
         <Modal
           open={passengerOpen}
           onClose={handlePassengerClose}
           closeAfterTransition
         >
-          <AddPassenger handleClose={handlePassengerClose} tripId={tripId} />
+          <AddPassenger
+            handleClose={handlePassengerClose}
+            tripId={tripId}
+            onClick={handleSnackbarOpen}
+          />
         </Modal>
         <Modal
           open={passengerOpen2}
@@ -93,6 +129,7 @@ export default function DisplayTrip() {
             handleClose={handlePassengerClose2}
             tripId={tripId}
             driverUUID={driverUUID}
+            onClick={handleSnackbarOpen}
           />
         </Modal>
         <Stack
@@ -160,15 +197,17 @@ export default function DisplayTrip() {
             alignItems="center"
             justifyContent="center"
             spacing={2}
-          >{(objectNotEmpty(state.drivers) || objectNotEmpty(state.freePassengers)) &&
-            <CombinedDisplay
-              drivers={state.drivers}
-              passengers={state.freePassengers}
-              channelId={tripId}
-              setDriverUUID={setDriverUUID}
-              handleOpen={handlePassengerOpen2}
-            />
-          }
+          >
+            {(objectNotEmpty(state.drivers) ||
+              objectNotEmpty(state.freePassengers)) && (
+              <CombinedDisplay
+                drivers={state.drivers}
+                passengers={state.freePassengers}
+                channelId={tripId}
+                setDriverUUID={setDriverUUID}
+                handleOpen={handlePassengerOpen2}
+              />
+            )}
           </Stack>
           {state.drivers &&
             Object.entries(state.drivers).map(([name, driverObject]) => {
