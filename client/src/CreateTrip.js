@@ -48,7 +48,10 @@ export default function CreateTrip() {
           justifyContent="center"
           spacing={2}
         >
-          <Typography variant="h1" align="center">
+          <Typography 
+            variant="h1" 
+            align="center" 
+            fontSize="60px">
             Create Trip
           </Typography>
           <Stack
