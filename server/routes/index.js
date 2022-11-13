@@ -128,4 +128,19 @@ router.get('/addPassenger', async (req, res) => {
   });
 });
 
+router.get('/removePassenger', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+
+  const channel = await hop.channels.get(`${channelId}`);
+  const freePassengerState = structuredClone(channel.state.freePassengers);
+  delete freePassengerState[name];
+  hop.patchState(channelId, {freePassengers: freePassengerState});
+
+  res.json({
+    message: 'Successfully Removed Passenger!',
+    channelId: channelId,
+  });
+});
+
 module.exports = router;
