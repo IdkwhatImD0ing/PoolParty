@@ -59,6 +59,7 @@ export default function AddDriver(props) {
         backgroundColor: "white",
         transform: "translate(-50%, -50%)",
         padding: "2%",
+        borderRadius: '16px',
       }}
     >
       <Typography variant="h3">Add a Driver</Typography>
@@ -140,7 +141,7 @@ export default function AddDriver(props) {
         </Grid>
       </Grid>
 
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button onClick={handleSubmit} variant='contained'>Submit</Button>
     </Stack>
   );
 }
