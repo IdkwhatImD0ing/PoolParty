@@ -59,7 +59,7 @@ export default function CarDisplay(props) {
         <ListSubheader
           component="div"
           id="nested-list-subheader"
-          sx={{borderRadius: '16px'}}
+          sx={{borderRadius: '16px', color: 'text.primary'}}
           disableSticky
         >
           <Typography variant="h6">
