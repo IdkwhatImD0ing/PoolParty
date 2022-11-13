@@ -45,11 +45,11 @@ export default function CarDisplay(props) {
   // const driver = testDrivers[1];
 
   const carEmpty = (driver) => {
-    return driver['remainingCapacity'] == driver['capacity'];
+    return driver['remainingCapacity'] === driver['capacity'];
   };
 
   const carNotFull = (driver) => {
-    return driver['remainingCapacity'] == 0;
+    return driver['remainingCapacity'] === 0;
   };
 
   const getIconColor = (driver) => {

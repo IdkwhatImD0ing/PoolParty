@@ -102,8 +102,8 @@ export default function DisplayTrip() {
             {state.drivers && <DriverDisplay drivers={state.drivers} />}
             {state.freePassengers && <PassengerDisplay passengers={state.freePassengers}/>}
           </Stack>
-          {state.drivers && Object.entries(state.drivers).map(([name, driver]) => {
-            return (<CarDisplay driver={driver} />);
+          {state.drivers && Object.entries(state.drivers).map(([name, driverObject]) => {
+            return (<CarDisplay driver={driverObject} />);
           })}
         </Stack>
       </Box>
