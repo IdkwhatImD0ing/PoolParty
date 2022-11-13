@@ -111,4 +111,21 @@ router.get('/joinPassenger', async (req, res) => {
   });
 });
 
+router.get('/addPassenger', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+  const contact = req.get('contact');
+
+  const passengerState = getInitialPassenger(name, contact);
+  const channel = await hop.channels.get(`${channelId}`);
+  hop.patchState(channelId, {
+    drivers: {...channel.state.freePassengers, [name]: passengerState},
+  });
+
+  res.json({
+    message: 'Successfully Joined as Passenger!',
+    channelId: channelId,
+  });
+});
+
 module.exports = router;
