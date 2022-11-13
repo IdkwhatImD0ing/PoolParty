@@ -21,8 +21,6 @@ export default function DisplayTrip() {
   const tripId = searchParams.get("tripId");
   const { state } = useReadChannelState(tripId);
 
-  // temp
-
   if (!tripId || !state) {
     return <Error />;
   }
