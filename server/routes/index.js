@@ -121,8 +121,8 @@ router.get('/addPassenger', async (req, res) => {
 
   const passengerState = getInitialPassenger(name, contact);
   const channel = await hop.channels.get(`${channelId}`);
-  hop.patchState(channelId, {
-    drivers: {...channel.state.freePassengers, [name]: passengerState},
+  hop.channels.patchState(channelId, {
+    freePassengers: {...channel.state.freePassengers, [name]: passengerState},
   });
 
   res.json({
@@ -138,7 +138,7 @@ router.get('/removePassenger', async (req, res) => {
   const channel = await hop.channels.get(`${channelId}`);
   const freePassengerState = structuredClone(channel.state.freePassengers);
   delete freePassengerState[name];
-  hop.patchState(channelId, {freePassengers: freePassengerState});
+  hop.channels.patchState(channelId, {freePassengers: freePassengerState});
 
   res.json({
     message: 'Successfully Removed Passenger!',
