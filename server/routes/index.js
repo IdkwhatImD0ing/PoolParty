@@ -71,6 +71,7 @@ router.get('/joinDriver', async (req, res) => {
   const color = req.get('color');
   const capacity = req.get('capacity');
   const contact = req.get('contact');
+  const pickup = req.get('pickup');
 
   const driverState = getInitialDriver(
     name,
@@ -79,10 +80,11 @@ router.get('/joinDriver', async (req, res) => {
     color,
     capacity,
     contact,
+    pickup,
   );
   const channel = await hop.channels.get(`${channelId}`);
 
-  hop.patchState(channelId, {
+  hop.channels.patchState(channelId, {
     drivers: {...channel.state.drivers, [name]: driverState},
   });
   res.json({message: 'Successfully Joined as Driver!', channelId: channelId});
@@ -103,10 +105,43 @@ router.get('/joinPassenger', async (req, res) => {
   };
   driverState[driver].remainingCapacity =
     driverState[driver].remainingCapacity - 1;
-  hop.patchState(channelId, {drivers: driverState});
+
+  hop.channels.patchState(channelId, {drivers: driverState});
 
   res.json({
     message: 'Successfully Joined as Passenger!',
+    channelId: channelId,
+  });
+});
+
+router.get('/addPassenger', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+  const contact = req.get('contact');
+
+  const passengerState = getInitialPassenger(name, contact);
+  const channel = await hop.channels.get(`${channelId}`);
+  hop.patchState(channelId, {
+    drivers: {...channel.state.freePassengers, [name]: passengerState},
+  });
+
+  res.json({
+    message: 'Successfully Joined as Passenger!',
+    channelId: channelId,
+  });
+});
+
+router.get('/removePassenger', async (req, res) => {
+  const channelId = req.get('channelId');
+  const name = req.get('name');
+
+  const channel = await hop.channels.get(`${channelId}`);
+  const freePassengerState = structuredClone(channel.state.freePassengers);
+  delete freePassengerState[name];
+  hop.patchState(channelId, {freePassengers: freePassengerState});
+
+  res.json({
+    message: 'Successfully Removed Passenger!',
     channelId: channelId,
   });
 });
