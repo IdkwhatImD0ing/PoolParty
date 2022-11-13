@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Typography, Stack, Button, TextField} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Box, Typography, Stack, Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateTrip() {
-  const [tripName, setTripName] = useState('');
-  const [tripDate, setTripDate] = useState('');
-  const [tripDest, setTripDest] = useState('');
+  const [tripName, setTripName] = useState("");
+  const [tripDate, setTripDate] = useState("");
+  const [tripDest, setTripDest] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (tripName === '') {
-      alert('Please enter a trip name');
+    if (tripName === "") {
+      alert("Please enter a trip name");
       return;
     }
 
-    console.log('tripDate', tripDate);
-    fetch('http://localhost:3001/createTrip', {
+    console.log("tripDate", tripDate);
+    fetch("http://localhost:3001/createTrip", {
       headers: {
         name: tripName,
         tripDate: tripDate,
@@ -35,11 +35,11 @@ export default function CreateTrip() {
         height="100vh"
         weight="100vw"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightblue',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "lightblue",
         }}
       >
         <Stack

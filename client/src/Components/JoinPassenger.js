@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Stack, Button, TextField } from "@mui/material";
 
-export default function AddPassenger(props) {
+export default function JoinPassenger(props) {
   const [passengerName, setPassengerName] = useState("");
   const [passengerContact, setPassengerContact] = useState("");
 
@@ -13,11 +13,12 @@ export default function AddPassenger(props) {
       return;
     }
 
-    fetch("http://localhost:3001/addPassenger", {
+    fetch("http://localhost:3001/joinPassenger", {
       headers: {
         channelId: props.tripId,
         name: passengerName,
         contact: passengerContact,
+        driverUUID: props.driverUUID,
       },
     });
     props.handleClose();
