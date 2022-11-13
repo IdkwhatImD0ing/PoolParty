@@ -2,9 +2,10 @@
 
 ## Demo Link
 
-Website: [PonGo](https://poolparty.hop.sh/)
+Website: [Pool Party](https://mypoolparty.tech/)  
+                [Backup Link](https://poolparty.hop.sh/)
 
-[Demo Video]
+[Demo Video](https://youtu.be/UEInrwiA_r8)
 
 ## 💡Inspiration
 
@@ -30,15 +31,17 @@ Pool Party lets users create a pool of people who are going to the same place at
 
 • Learning material UI
 
-• Some team members had never used React or JavaScript before
+• Some team members had never used React and JavaScript before
 
-• Styling
+• Styling edge cases
 
-• Version control with 4 teammates - the merge conflicts were real
+• Version control with 4 teammates - handling merge conflicts was tough!
 
 ## ✅Accomplishments that we're proud of
 
-• Was able to successfully make a front end and backend and deploy it on Hop.io 
+• Was able to successfully make a frontend, backend and deploy it on Hop.io 
+
+• Creating a clean minimalist UI
 
 • Able to implement a real time database
 
