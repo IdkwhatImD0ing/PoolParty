@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, Modal} from '@mui/material';
-import PassengerDisplay from './Components/PassengerDisplay';
-import AddPassenger from './Components/AddPassenger';
-import Error from './Components/Error';
-import DriverDisplay from './Components/DriverDisplay';
-import AddDriver from './Components/AddDriver';
-import {useSearchParams} from 'react-router-dom';
-import {useReadChannelState} from '@onehop/react';
+import React, { useState } from "react";
+import { Box, Typography, Stack, Button, Modal } from "@mui/material";
+import PassengerDisplay from "./Components/PassengerDisplay";
+import AddPassenger from "./Components/AddPassenger";
+import Error from "./Components/Error";
+import DriverDisplay from "./Components/DriverDisplay";
+import AddDriver from "./Components/AddDriver";
+import { useSearchParams } from "react-router-dom";
+import { useReadChannelState } from "@onehop/react";
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
@@ -18,8 +18,8 @@ export default function DisplayTrip() {
   const handlePassengerOpen = () => setPassengerOpen(true);
   const handlePassengerClose = () => setPassengerOpen(false);
 
-  const tripId = searchParams.get('tripId');
-  const {state} = useReadChannelState(tripId);
+  const tripId = searchParams.get("tripId");
+  const { state } = useReadChannelState(tripId);
 
   if (!tripId || !state) {
     return <Error />;
@@ -31,11 +31,10 @@ export default function DisplayTrip() {
         height="100vh"
         weight="100vw"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightblue',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "lightblue",
         }}
       >
         <Modal
@@ -56,9 +55,34 @@ export default function DisplayTrip() {
           direction="column"
           alignItems="center"
           justifyContent="center"
-          spacing={2}
+          spacing={"5vh"}
+          sx={{ mt: "5%" }}
+          maxWidth="98%"
         >
-          <Typography variant="h1">Trip Name: {state.name}</Typography>
+          <Typography variant="h1" align="center">
+            Carpool for
+          </Typography>
+
+          {state.date !== "" && (
+            <Typography
+              variant="h1"
+              align="center"
+              sx={{ fontWeight: "bold", fontSize: "80px" }}
+            >
+              "GraceHacks {state.name}" on {state.date}
+            </Typography>
+          )}
+
+          {state.date === "" && (
+            <Typography
+              variant="h1"
+              align="center"
+              sx={{ fontWeight: "bold", fontSize: "80px" }}
+            >
+              "GraceHacks {state.name}"
+            </Typography>
+          )}
+
           <Stack
             direction="row"
             alignItems="center"
