@@ -10,7 +10,7 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<AddDriver />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/create" element={<CreateTrip />} />
           <Route path="/error" element={<Error />} />
           <Route path="/display" element={<DisplayTrip />} />
