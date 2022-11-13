@@ -49,7 +49,7 @@ export default function CarDisplay(props) {
   };
 
   const carNotFull = (driver) => {
-    return driver['remainingCapacity'] === 0;
+    return driver['remainingCapacity'] > 0;
   };
 
   const getIconColor = (driver) => {
@@ -71,7 +71,7 @@ export default function CarDisplay(props) {
           <Stack direction = "row" alignItems = "center" spacing={1}>
             <CircleIcon sx={{color: getIconColor(driver)}}/>
             <Typography variant='h8'>
-              {`${driver.remainingCapacity}/${driver.capacity} Passengers`}
+              {`${driver.capacity - driver.remainingCapacity}/${driver.capacity} Passengers`}
             </Typography>
           </Stack>
         </ListSubheader>

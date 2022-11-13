@@ -53,7 +53,7 @@ export default function DriverDisplay(props) {
                 </ListItemIcon>
                 <ListItemText
                   primary={`${driver['name']}`}
-                  secondary={`${driver['remainingCapacity']}/${driver['capacity']} seats`}
+                  secondary={`${driver['remainingCapacity']} seats available`}
                   edge="start"
                 />
               </ListItem>
