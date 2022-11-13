@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
-import PassengerDisplay from './Components/PassengerDisplay';
 import AddPassenger from './Components/AddPassenger';
 import Error from './Components/Error';
-import DriverDisplay from './Components/DriverDisplay';
 import CarDisplay from './Components/CarDisplay';
 import CombinedDisplay from './Components/CombinedDisplay';
 import AddDriver from './Components/AddDriver';
