@@ -25,36 +25,32 @@ export default function CreateTrip() {
           justifyContent="center"
           spacing={2}
         >
-          <Typography variant="h1">Create a Trip</Typography>
+          
+          <Typography variant="h1" align='center'>Create a trip</Typography>
           <TextField
+            required
             id="tripName"
-            label="Trip Name"
+            label="Trip Name (required)"
             variant="outlined"
             value={tripName}
             onChange={(e) => setTripName(e.target.value)}
           />
           <TextField
             id="tripDate"
-            label="Trip Date"
+            label="Date"
             variant="outlined"
             value={tripDate}
             onChange={(e) => setTripDate(e.target.value)}
           />
           <TextField
             id="tripDest"
-            label="Trip Destination"
+            label="Destination"
             variant="outlined"
             value={tripDest}
             onChange={(e) => setTripDest(e.target.value)}
           />
-          <TextField
-            id="tripDeadline"
-            label="Trip Deadline"
-            variant="outlined"
-            value={tripDeadline}
-            onChange={(e) => setTripDeadline(e.target.value)}
-          />
-          <Button>Submit</Button>
+          <></>
+          <Button variant='contained' >Submit</Button>
         </Stack>
       </Box>
     </>
