@@ -21,6 +21,19 @@ export default function DisplayTrip() {
   const tripId = searchParams.get('tripId');
   const {state} = useReadChannelState(tripId);
 
+  const formatDate = (date) => {
+      const dateObj = new Date(date);
+      const day = dateObj.getDate();
+      const months = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August', 'September',
+      'October', 'November', 'December'];
+      const month = months[dateObj.getMonth()];
+      const year = dateObj.getFullYear();
+      
+      return `${month} ${day}, ${year}`;
+  };
+
   if (!tripId || !state) {
     return <Error />;
   }
@@ -52,6 +65,7 @@ export default function DisplayTrip() {
         >
           <AddPassenger handleClose={handlePassengerClose} tripId={tripId} />
         </Modal>
+
         <Stack
           direction="column"
           alignItems="center"
@@ -60,29 +74,29 @@ export default function DisplayTrip() {
           sx={{mt: '5%'}}
           maxWidth="98%"
         >
-          <Typography variant="h1" align="center">
-            Carpool for
-          </Typography>
+          <Typography variant="h4">
+            Coordinate Carpool
+          </Typography>  
 
-          {state.date !== '' && (
+          <Box>
             <Typography
               variant="h1"
               align="center"
-              sx={{fontWeight: 'bold', fontSize: '80px'}}
+              sx={{fontWeight: 'bold', fontSize: '64px'}}
             >
-              "{state.name}" on {state.date}
+              {state.name}
             </Typography>
-          )}
 
-          {state.date === '' && (
-            <Typography
-              variant="h1"
-              align="center"
-              sx={{fontWeight: 'bold', fontSize: '80px'}}
-            >
-              "GraceHacks {state.name}"
-            </Typography>
-          )}
+            {state.date !== '' && (
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{fontSize: '32px'}}
+              >
+                {formatDate(state.date)}
+              </Typography>
+            )}
+          </Box>
 
           <Stack
             direction="row"

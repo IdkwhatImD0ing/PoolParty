@@ -2,6 +2,7 @@ import React from 'react';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import CircleIcon from '@mui/icons-material/Circle';
 import AddIcon from '@mui/icons-material/Add';
+import PlaceIcon from '@mui/icons-material/Place';
 
 import {
   List,
@@ -57,7 +58,7 @@ export default function CarDisplay(props) {
             <Typography variant="h8">
               {`${driver.capacity - driver.remainingCapacity}/${
                 driver.capacity
-              } Passengers`}
+              } passengers`}
             </Typography>
           </Stack>
         </ListSubheader>
@@ -71,6 +72,16 @@ export default function CarDisplay(props) {
           primary={driver.name}
           primaryTypographyProps={{variant: 'h8'}}
           secondary={driver.contact}
+        />
+      </ListItem>
+      <ListItem>
+        <ListItemIcon>
+          <PlaceIcon/>
+        </ListItemIcon>
+        <ListItemText
+          primary={driver.pickup}
+          primaryTypographyProps={{variant: 'h8'}}
+          secondary={'Pickup'}
         />
       </ListItem>
       <Divider />
