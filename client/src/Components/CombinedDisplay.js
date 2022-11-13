@@ -68,6 +68,7 @@ export default function DriverDisplay(props) {
             component="div"
             id="nested-list-subheader"
             sx={{borderRadius: '16px'}}
+            disableSticky
           >
             <Typography variant="h6">Drivers</Typography>
           </ListSubheader>
@@ -117,6 +118,7 @@ export default function DriverDisplay(props) {
             component="div"
             id="nested-list-subheader"
             sx={{borderRadius: '16px'}}
+            disableSticky
           >
             <Stack direction="row" justifyContent="space-between">
               <Typography variant="h6">Needs a Ride</Typography>
