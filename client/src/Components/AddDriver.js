@@ -61,7 +61,7 @@ export default function AddDriver(props) {
         padding: "2%",
       }}
     >
-      <Typography variant="h1">Add a Driver</Typography>
+      <Typography variant="h3">Add a Driver</Typography>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <TextField
