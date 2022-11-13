@@ -42,14 +42,14 @@ export default function JoinPassenger(props) {
       <Typography variant="h3">Add a Passenger</Typography>
       <TextField
         id="passengerName"
-        label="Passenger Name"
+        label="Name"
         variant="outlined"
         value={passengerName}
         onChange={(e) => setPassengerName(e.target.value)}
       />
       <TextField
         id="passengerContact"
-        label="Passenger Contact"
+        label="Contact"
         variant="outlined"
         value={passengerContact}
         onChange={(e) => setPassengerContact(e.target.value)}
