@@ -32,10 +32,10 @@ export default function DisplayTrip() {
         height="100vh"
         weight="100vw"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundColor: "lightblue",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: 'lightblue',
         }}
       >
         <Modal
@@ -50,35 +50,35 @@ export default function DisplayTrip() {
           onClose={handlePassengerClose}
           closeAfterTransition
         >
-          <AddPassenger />
+          <AddPassenger handleClose={handlePassengerClose} tripId={tripId} />
         </Modal>
         <Stack
           direction="column"
           alignItems="center"
           justifyContent="center"
-          spacing={"5vh"}
-          sx={{ mt: "5%" }}
+          spacing={'5vh'}
+          sx={{mt: '5%'}}
           maxWidth="98%"
         >
           <Typography variant="h1" align="center">
             Carpool for
           </Typography>
 
-          {state.date !== "" && (
+          {state.date !== '' && (
             <Typography
               variant="h1"
               align="center"
-              sx={{ fontWeight: "bold", fontSize: "80px" }}
+              sx={{fontWeight: 'bold', fontSize: '80px'}}
             >
               "GraceHacks {state.name}" on {state.date}
             </Typography>
           )}
 
-          {state.date === "" && (
+          {state.date === '' && (
             <Typography
               variant="h1"
               align="center"
-              sx={{ fontWeight: "bold", fontSize: "80px" }}
+              sx={{fontWeight: 'bold', fontSize: '80px'}}
             >
               "GraceHacks {state.name}"
             </Typography>
