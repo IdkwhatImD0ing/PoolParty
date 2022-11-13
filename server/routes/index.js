@@ -181,4 +181,30 @@ router.get('/removeFromCar', async (req, res) => {
   });
 });
 
+router.get('/removeDriver', async (req, res) => {
+  const channelId = req.get('channelId');
+  const driverUUID = req.get('driverUUID');
+
+  const channel = await hop.channels.get(`${channelId}`);
+  const driverState = structuredClone(channel.state.drivers);
+
+  //Move all driver passengers to free passengers
+  const freePassengerState = {
+    ...structuredClone(channel.state.freePassengers),
+    ...driverState[driverUUID].passengers,
+  };
+
+  delete driverState[driverUUID];
+
+  hop.channels.patchState(channelId, {
+    drivers: driverState,
+    freePassengers: freePassengerState,
+  });
+
+  res.json({
+    message: 'Successfully Removed Driver!',
+    channelId: channelId,
+  });
+});
+
 module.exports = router;
