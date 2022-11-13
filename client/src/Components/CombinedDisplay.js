@@ -13,6 +13,7 @@ import {
   Divider,
   ListSubheader,
   Typography,
+  Tooltip,
 } from '@mui/material';
 
 export default function DriverDisplay(props) {
@@ -75,14 +76,16 @@ export default function DriverDisplay(props) {
               <ListItem
                 key={name}
                 secondaryAction={ carNotFull(driver) && (
-                  <IconButton
-                    onClick={() => {
-                      props.setDriverUUID(name);
-                      props.handleOpen();
-                    }}
-                  >
-                    <AddIcon />
-                  </IconButton>
+                  <Tooltip title="Add Passenger">
+                    <IconButton
+                      onClick={() => {
+                        props.setDriverUUID(name);
+                        props.handleOpen();
+                      }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  </Tooltip>
                 )}
               >
                 <ListItemIcon sx={{color: getIconColor(driver)}}>
@@ -93,13 +96,15 @@ export default function DriverDisplay(props) {
                   secondary={`${driver['remainingCapacity']} seats available`}
                   edge="start"
                 />
-                <IconButton
-                  onClick={() => {
-                    handleSubmitDelete(name);
-                  }}
-                >
-                  <RemoveIcon />
-                </IconButton>
+                <Tooltip title="Remove Driver">
+                  <IconButton
+                    onClick={() => {
+                      handleSubmitDelete(name);
+                    }}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                </Tooltip>
               </ListItem>
             );
           })}
@@ -125,13 +130,15 @@ export default function DriverDisplay(props) {
               <ListItem
                 key={name}
                 secondaryAction={
-                  <IconButton
-                    onClick={() => {
-                      handleSubmit(name);
-                    }}
-                  >
-                    <RemoveIcon />
-                  </IconButton>
+                  <Tooltip title="Remove">
+                    <IconButton
+                      onClick={() => {
+                        handleSubmit(name);
+                      }}
+                    >
+                      <RemoveIcon />
+                    </IconButton>
+                  </Tooltip>
                 }
               >
                 <ListItemText primary={`${passenger['name']}`} edge="start" />
