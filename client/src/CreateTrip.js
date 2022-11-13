@@ -51,32 +51,42 @@ export default function CreateTrip() {
           <Typography variant="h1" align="center">
             Create a trip
           </Typography>
-          <TextField
-            required
-            id="tripName"
-            label="Trip Name (required)"
-            variant="outlined"
-            value={tripName}
-            onChange={(e) => setTripName(e.target.value)}
-          />
-          <TextField
-            id="tripDate"
-            label="Date"
-            variant="outlined"
-            value={tripDate}
-            onChange={(e) => setTripDate(e.target.value)}
-          />
-          <TextField
-            id="tripDest"
-            label="Destination"
-            variant="outlined"
-            value={tripDest}
-            onChange={(e) => setTripDest(e.target.value)}
-          />
-          <></>
-          <Button onClick={handleSubmit} variant="contained">
-            Submit
-          </Button>
+          <Stack
+            justifyContent="center"
+            spacing={2}
+            sx={{
+              backgroundColor: "white",
+              padding: "2%",
+              borderRadius: "16px",
+            }}
+          >
+            <TextField
+              required
+              id="tripName"
+              label="Trip Name (required)"
+              variant="outlined"
+              value={tripName}
+              onChange={(e) => setTripName(e.target.value)}
+            />
+            <TextField
+              id="tripDate"
+              label="Date"
+              variant="outlined"
+              value={tripDate}
+              onChange={(e) => setTripDate(e.target.value)}
+            />
+            <TextField
+              id="tripDest"
+              label="Destination"
+              variant="outlined"
+              value={tripDest}
+              onChange={(e) => setTripDest(e.target.value)}
+            />
+            <></>
+            <Button onClick={handleSubmit} variant="contained">
+              Submit
+            </Button>
+          </Stack>
         </Stack>
       </Box>
     </>
