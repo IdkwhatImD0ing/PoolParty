@@ -1,9 +1,27 @@
 import React, {useState} from 'react';
 import {Typography, Stack, Button, TextField} from '@mui/material';
 
-export default function AddPassenger() {
+export default function AddPassenger(props) {
   const [passengerName, setPassengerName] = useState('');
   const [passengerContact, setPassengerContact] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (passengerName === '') {
+      alert('Please fill out name');
+      return;
+    }
+
+    fetch('http://localhost:3001/addPassenger', {
+      headers: {
+        channelId: props.tripId,
+        name: passengerName,
+        contact: passengerContact,
+      },
+    });
+    props.handleClose();
+  };
   return (
     <Stack
       position="absolute"
@@ -34,7 +52,7 @@ export default function AddPassenger() {
         value={passengerContact}
         onChange={(e) => setPassengerContact(e.target.value)}
       />
-      <Button>Add</Button>
+      <Button onClick={handleSubmit}>Add</Button>
     </Stack>
   );
 }
