@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 import {
+  Stack,
   List,
   ListItem,
   ListItemText,
@@ -75,7 +76,12 @@ export default function DriverDisplay(props) {
             id="nested-list-subheader"
             sx={{borderRadius: '16px'}}
           >
-            <Typography variant="h6">Waitlist</Typography>
+            <Stack direction="row" justifyContent='space-between'>
+              <Typography variant="h6">Needs a Ride</Typography>
+              <Typography variant="h8">
+                {`${Object.keys(passengers).length} total`}
+              </Typography>
+            </Stack>
           </ListSubheader>
           {Object.entries(passengers).map(([name, passenger]) => {
             return (
