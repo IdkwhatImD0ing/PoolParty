@@ -9,11 +9,11 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ListSubheader from '@mui/material/ListSubheader';
 
 const makeTestPassengers = () => {
-  return ({
+  return {
     'Patrick Passenger': {name: 'Patrick', contact: 'patty@ucsc.edu'},
     'Nessie': {name: 'Loch Nessie', contact: 'lochland@gmail.com'},
     'Alan Watts': {name: 'Alan Watts', contact: '424-988-0992'},
-  });
+  };
 };
 
 export default function PassengerDisplay(props) {
@@ -29,15 +29,24 @@ contact:
 }*/
 
   return (
-    <List dense
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '16px' }}
+    <List
+      dense
+      sx={{
+        width: '100%',
+        bgcolor: 'background.paper',
+        borderRadius: '16px',
+        padding: '2%',
+      }}
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader" sx={{borderRadius: '16px'}}>
-          <Typography variant='h6'>
-            Unseated Passengers
-          </Typography>
+        <ListSubheader
+          component="div"
+          id="nested-list-subheader"
+          sx={{borderRadius: '16px'}}
+        >
+          <Typography variant="h6">Unseated Passengers</Typography>
         </ListSubheader>
-      }>
+      }
+    >
       {Object.entries(passengers).map(([name, passenger]) => {
         return (
           <ListItem
@@ -46,8 +55,9 @@ contact:
               <IconButton>
                 <RemoveIcon/>
               </IconButton>
-            }>
-              <ListItemText primary={`${passenger['name']}`} edge='start'/>
+            }
+          >
+            <ListItemText primary={`${passenger['name']}`} edge="start" />
           </ListItem>
         );
       })}
