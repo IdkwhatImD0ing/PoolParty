@@ -43,7 +43,7 @@ contact:
           id="nested-list-subheader"
           sx={{borderRadius: '16px'}}
         >
-          <Typography variant="h6">Unseated Passengers</Typography>
+          <Typography variant="h6">Waitlist</Typography>
         </ListSubheader>
       }
     >
