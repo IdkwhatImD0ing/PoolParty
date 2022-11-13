@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Stack, Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { DesktopDatePicker, MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 export default function CreateTrip() {
   const [tripName, setTripName] = useState("");
-  const [tripDate, setTripDate] = useState("");
+  const [tripDate, setTripDate] = useState(new Date());
   const [tripDest, setTripDest] = useState("");
 
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ export default function CreateTrip() {
             spacing={2}
             sx={{
               backgroundColor: "white",
-              padding: "2%",
+              padding: "8%",
               borderRadius: "16px",
             }}
           >
@@ -71,13 +73,29 @@ export default function CreateTrip() {
               value={tripName}
               onChange={(e) => setTripName(e.target.value)}
             />
-            <TextField
-              id="tripDate"
-              label="Date"
-              variant="outlined"
-              value={tripDate}
-              onChange={(e) => setTripDate(e.target.value)}
-            />
+            {window.innerWidth < 600 &&
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <MobileDatePicker
+                  label="Date"
+                  inputFormat="MM/DD/YYYY"
+                  value={tripDate}
+                  onChange={(val) => setTripDate(val)}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            }
+            {window.innerWidth >= 600 && 
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DesktopDatePicker
+                  label="Date"
+                  inputFormat="MM/DD/YYYY"
+                  value={tripDate}
+                  onChange={(val) => setTripDate(val)}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            }
+
             <TextField
               id="tripDest"
               label="Destination"
