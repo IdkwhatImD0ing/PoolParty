@@ -1,8 +1,10 @@
 import React from 'react';
 import {Box, Typography, Stack, Button} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 // import { positions } from '@mui/system';
 
 export default function Landing() {
+  const navigate = useNavigate();
   return (
     <>
       <Box
@@ -31,7 +33,7 @@ export default function Landing() {
           </Typography>
           <Button
             onClick={() => {
-              alert('clicked');
+              navigate('/create');
             }}
             sx={{
               backgroundColor: '#d2c457',
