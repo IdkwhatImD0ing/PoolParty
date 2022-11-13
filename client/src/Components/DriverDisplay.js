@@ -24,6 +24,7 @@ export default function DriverDisplay(props) {
           dense
           sx={{
             width: '100%',
+            minWidth: 240,
             maxWidth: 360,
             bgcolor: 'background.paper',
             borderRadius: '16px',
