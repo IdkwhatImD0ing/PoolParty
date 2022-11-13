@@ -13,7 +13,7 @@ export default function JoinPassenger(props) {
       return;
     }
 
-    fetch("http://localhost:3001/joinPassenger", {
+    fetch("https://poolserver.hop.sh/joinPassenger", {
       headers: {
         channelId: props.tripId,
         name: passengerName,

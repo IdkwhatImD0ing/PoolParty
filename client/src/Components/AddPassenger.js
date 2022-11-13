@@ -13,7 +13,7 @@ export default function AddPassenger(props) {
       return;
     }
 
-    fetch("http://localhost:3001/addPassenger", {
+    fetch("https://poolserver.hop.sh/addPassenger", {
       headers: {
         channelId: props.tripId,
         name: passengerName,

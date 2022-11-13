@@ -32,7 +32,7 @@ export default function AddDriver(props) {
       return;
     }
 
-    fetch('http://localhost:3001/joinDriver', {
+    fetch('https://poolserver.hop.sh/joinDriver', {
       headers: {
         channelId: props.tripId,
         name: driverName,

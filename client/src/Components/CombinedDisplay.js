@@ -24,7 +24,7 @@ export default function DriverDisplay(props) {
   };
 
   const handleSubmit = (passengerUUID) => {
-    fetch('http://localhost:3001/removePassenger', {
+    fetch('https://poolserver.hop.sh/removePassenger', {
       headers: {
         channelId: props.channelId,
         passengerUUID: passengerUUID,
@@ -33,7 +33,7 @@ export default function DriverDisplay(props) {
   };
 
   const handleSubmitDelete = (driverUUID) => {
-    fetch('http://localhost:3001/removeDriver', {
+    fetch('https://poolserver.hop.sh/removeDriver', {
       headers: {
         channelId: props.channelId,
         driverUUID: driverUUID,

@@ -17,7 +17,7 @@ export default function CreateTrip() {
     }
 
     console.log("tripDate", tripDate);
-    fetch("http://localhost:3001/createTrip", {
+    fetch("https://poolserver.hop.sh/createTrip", {
       headers: {
         name: tripName,
         tripDate: tripDate,

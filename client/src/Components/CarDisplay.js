@@ -34,7 +34,7 @@ export default function CarDisplay(props) {
   };
 
   const handleSubmit = (driverUUID, passengerUUID) => {
-    fetch('http://localhost:3001/removeFromCar', {
+    fetch('https://poolserver.hop.sh/removeFromCar', {
       headers: {
         channelId: props.channelId,
         passengerUUID: passengerUUID,
