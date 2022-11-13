@@ -5,13 +5,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 
-import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import ListSubheader from '@mui/material/ListSubheader';
 
 const makeTestPassengers = () => {
   return {
     'Patrick Passenger': {name: 'Patrick', contact: 'patty@ucsc.edu'},
-    Nessie: {name: 'Loch Nessie', contact: 'lochland@gmail.com'},
+    'Nessie': {name: 'Loch Nessie', contact: 'lochland@gmail.com'},
     'Alan Watts': {name: 'Alan Watts', contact: '424-988-0992'},
   };
 };
@@ -53,7 +53,7 @@ contact:
             key={name}
             secondaryAction={
               <IconButton>
-                <AddIcon />
+                <RemoveIcon/>
               </IconButton>
             }
           >
