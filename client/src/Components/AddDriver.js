@@ -60,8 +60,9 @@ export default function AddDriver(props) {
       <Typography variant="h3" align="center">
         Add Driver
       </Typography>
-      <Grid container rowSpacing={2} columnSpacing={{xs: 1, sm: 2, md: 2}}>
-        <Grid item xs={6}>
+      <Grid container rowSpacing={2}
+      >
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="driverName"
             label="Name"
@@ -71,7 +72,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="driverContact"
             label="Contact"
@@ -81,7 +82,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="groupName"
             label="Group Name"
@@ -91,7 +92,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="driverPickup"
             label="Pickup Location"
@@ -101,7 +102,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="make"
             label="Car Make"
@@ -111,7 +112,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} pl={1} pr={1}>
           <TextField
             id="color"
             label="Car Color"
@@ -121,7 +122,7 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} pl={1} pr={1}>
           <TextField
             id="seats"
             label="Number of Available Seats"
