@@ -17,14 +17,14 @@ const makeTestPassengers = () => {
 };
 
 
-const makeTestDriver = (name, groupName, make, color, capacity, curNumRiders, contact) => {
+const makeTestDriver = (name, groupName, make, color, capacity, remainingCapacity, contact) => {
   return ({
     name: name,
     make: make,
     color: color,
     groupName: groupName,
     capacity: capacity,
-    curNumRiders: curNumRiders,
+    remainingCapacity: remainingCapacity,
     contact: contact,
     passengers: makeTestPassengers(), 
   });
@@ -41,11 +41,15 @@ const testDrivers = [makeTestDriver('Jason Burger', 'Jason\'s Car', 'Ford F350',
  
 export default function CarDisplay(props) {
 
-  // const driver = props.drivers;
-  const driver = testDrivers[1];
+  const driver = props.driver;
+  // const driver = testDrivers[1];
+
+  const carEmpty = (driver) => {
+    return driver['remainingCapacity'] === driver['capacity'];
+  };
 
   const carNotFull = (driver) => {
-    return driver['capacity'] > driver['curNumRiders'];
+    return driver['remainingCapacity'] > 0;
   };
 
   const getIconColor = (driver) => {
@@ -67,7 +71,7 @@ export default function CarDisplay(props) {
           <Stack direction = "row" alignItems = "center" spacing={1}>
             <CircleIcon sx={{color: getIconColor(driver)}}/>
             <Typography variant='h8'>
-              {`${driver.curNumRiders}/${driver.capacity} Passengers`}
+              {`${driver.capacity - driver.remainingCapacity}/${driver.capacity} Passengers`}
             </Typography>
           </Stack>
         </ListSubheader>
@@ -91,7 +95,12 @@ export default function CarDisplay(props) {
               </ListItem>
             );
           })}
-          {!carNotFull(driver) ? <></> :
+          {carEmpty(driver) &&
+            <ListItem>
+              <ListItemText secondary='No passengers yet'/>
+            </ListItem>
+          }
+          {carNotFull(driver) &&
             <ListItemButton>
               <ListItemIcon>
                 <AddIcon/>

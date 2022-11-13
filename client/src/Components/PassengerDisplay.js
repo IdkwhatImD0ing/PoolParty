@@ -18,8 +18,8 @@ const makeTestPassengers = () => {
 
 export default function PassengerDisplay(props) {
   // Dictionary  of passenger objects
-  // const passengers = props.passengers;
-  const passengers = makeTestPassengers();
+  const passengers = props.passengers;
+  // const passengers = makeTestPassengers();
 
   /*
   passenger object
