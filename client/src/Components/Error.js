@@ -18,13 +18,10 @@ export default function Error() {
       }}
     >
       <Loading/>
-      <Typography variant="h1" color="black">
-        404
-      </Typography>
-      <Typography variant="h2" color="black" maxWidth={'90%'}>
-        Error: trip not found
-      </Typography>
-      <Typography variant="h5" color="#32b2b7">
+      
+      <Typography variant="h5" color="black" sx = {{
+        mt: 3
+      }}>
         make sure you copied the URL correctly!
       </Typography>
       <Button
