@@ -21,6 +21,7 @@ export default function JoinPassenger(props) {
         driverUUID: props.driverUUID,
       },
     });
+    props.onClick();
     props.handleClose();
   };
   return (
