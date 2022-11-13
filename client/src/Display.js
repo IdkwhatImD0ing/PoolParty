@@ -85,7 +85,7 @@ export default function DisplayTrip() {
         }}
       >
         <Snackbar
-          anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+          anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
           open={snackbarOpen}
           onClose={handleSnackbarClose}
           autoHideDuration={3000}
