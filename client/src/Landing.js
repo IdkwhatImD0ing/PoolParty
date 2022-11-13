@@ -53,8 +53,7 @@ export default function Landing() {
             About Us
           </Typography>
           <Typography variant="h5" fontStyle={'sans-serif'} maxWidth="95%">
-            We're a group of students at UC Santa Cruz who are passionate about
-            helping students to find rides.
+            We're a group of students at UC Santa Cruz who are passionate about helping students to find rides.
           </Typography>
         </Stack>
       </Box>
