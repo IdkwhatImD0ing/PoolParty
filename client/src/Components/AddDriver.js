@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Typography, Stack, Button, TextField} from '@mui/material';
 
-export default function AddDriver() {
+export default function AddDriver(props) {
   const [driverName, setDriverName] = useState('');
   const [driverContact, setDriverContact] = useState('');
   const [driverPickup, setDriverPickup] = useState('');
@@ -9,66 +9,102 @@ export default function AddDriver() {
   const [make, setMake] = useState('');
   const [groupName, setGroupName] = useState('');
   const [seats, setSeats] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      driverName === '' ||
+      driverContact === '' ||
+      driverPickup === '' ||
+      color === '' ||
+      make === '' ||
+      groupName === '' ||
+      seats === ''
+    ) {
+      alert('Please fill out all fields');
+      return;
+    }
+
+    fetch('http://localhost:3001/joinDriver', {
+      headers: {
+        channelId: props.tripId,
+        name: driverName,
+        contact: driverContact,
+        color: color,
+        make: make,
+        groupName: groupName,
+        capacity: seats,
+        pickup: driverPickup,
+      },
+    });
+    props.handleClose();
+  };
   return (
-    <>
-      <Stack
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        spacing={2}
-      >
-        <Typography variant="h1">Add a Driver</Typography>
-        <TextField
-          id="driverName"
-          label="Driver Name"
-          variant="outlined"
-          value={driverName}
-          onChange={(e) => setDriverName(e.target.value)}
-        />
-        <TextField
-          id="driverContact"
-          label="Driver Contact"
-          variant="outlined"
-          value={driverContact}
-          onChange={(e) => setDriverContact(e.target.value)}
-        />
-        <TextField
-          id="driverPickup"
-          label="Driver Pickup Location"
-          variant="outlined"
-          value={driverPickup}
-          onChange={(e) => setDriverPickup(e.target.value)}
-        />
-        <TextField
-          id="color"
-          label="Car Color"
-          variant="outlined"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        />
-        <TextField
-          id="make"
-          label="Car Make"
-          variant="outlined"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-        />
-        <TextField
-          id="groupName"
-          label="Group Name"
-          variant="outlined"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-        />
-        <TextField
-          id="seats"
-          label="Number of Seats"
-          variant="outlined"
-          value={seats}
-          onChange={(e) => setSeats(e.target.value)}
-        />
-        <Button>Submit</Button>
-      </Stack>
-    </>
+    <Stack
+      position="absolute"
+      top="50%"
+      left="50%"
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      spacing={2}
+      sx={{
+        backgroundColor: 'white',
+        transform: 'translate(-50%, -50%)',
+        padding: '2%',
+      }}
+    >
+      <Typography variant="h3">Add a Driver</Typography>
+      <TextField
+        id="driverName"
+        label="Driver Name"
+        variant="outlined"
+        value={driverName}
+        onChange={(e) => setDriverName(e.target.value)}
+      />
+      <TextField
+        id="driverContact"
+        label="Driver Contact"
+        variant="outlined"
+        value={driverContact}
+        onChange={(e) => setDriverContact(e.target.value)}
+      />
+      <TextField
+        id="driverPickup"
+        label="Driver Pickup Location"
+        variant="outlined"
+        value={driverPickup}
+        onChange={(e) => setDriverPickup(e.target.value)}
+      />
+      <TextField
+        id="color"
+        label="Car Color"
+        variant="outlined"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <TextField
+        id="make"
+        label="Car Make"
+        variant="outlined"
+        value={make}
+        onChange={(e) => setMake(e.target.value)}
+      />
+      <TextField
+        id="groupName"
+        label="Group Name"
+        variant="outlined"
+        value={groupName}
+        onChange={(e) => setGroupName(e.target.value)}
+      />
+      <TextField
+        id="seats"
+        label="Number of Seats"
+        variant="outlined"
+        value={seats}
+        onChange={(e) => setSeats(e.target.value)}
+      />
+      <Button onClick={handleSubmit}>Submit</Button>
+    </Stack>
   );
 }

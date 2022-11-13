@@ -9,7 +9,15 @@ const createInitialState = (name, destination, date) => {
 
   return obj;
 };
-const getInitialDriver = (name, groupName, make, color, capacity, contact) => {
+const getInitialDriver = (
+  name,
+  groupName,
+  make,
+  color,
+  capacity,
+  contact,
+  pickup,
+) => {
   const obj = {
     name: name,
     groupName: groupName,
@@ -19,6 +27,7 @@ const getInitialDriver = (name, groupName, make, color, capacity, contact) => {
     remainingCapacity: capacity,
     contact: contact,
     passengers: {},
+    pickup: pickup,
   };
 
   return obj;
