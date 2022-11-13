@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Typography, Stack, Button, TextField} from '@mui/material';
+import {Box, Typography, Stack, Button, Modal} from '@mui/material';
 import PassengerDisplay from './Components/PassengerDisplay';
 import AddPassenger from './Components/AddPassenger';
 import Error from './Components/Error';
@@ -11,9 +11,15 @@ import {useReadChannelState} from '@onehop/react';
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [driverOpen, setDriverOpen] = useState(false);
+  const [passengerOpen, setPassengerOpen] = useState(false);
+  const handleDriverOpen = () => setDriverOpen(true);
+  const handleDriverClose = () => setDriverOpen(false);
+  const handlePassengerOpen = () => setPassengerOpen(true);
+  const handlePassengerClose = () => setPassengerOpen(false);
+
   const tripId = searchParams.get('tripId');
   const {state} = useReadChannelState(tripId);
-  console.log(state);
 
   if (!tripId || !state) {
     return <Error />;
@@ -32,6 +38,20 @@ export default function DisplayTrip() {
           backgroundColor: 'lightblue',
         }}
       >
+        <Modal
+          open={driverOpen}
+          onClose={handleDriverClose}
+          closeAfterTransition
+        >
+          <AddDriver handleClose={handleDriverClose} tripId={tripId} />
+        </Modal>
+        <Modal
+          open={passengerOpen}
+          onClose={handlePassengerClose}
+          closeAfterTransition
+        >
+          <AddPassenger />
+        </Modal>
         <Stack
           direction="column"
           alignItems="center"
@@ -45,8 +65,8 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={5}
           >
-            <Button>Add Driver</Button>
-            <Button>Add Passenger</Button>
+            <Button onClick={handleDriverOpen}>Add Driver</Button>
+            <Button onClick={handlePassengerOpen}>Add Passenger</Button>
           </Stack>
           <Stack
             direction="row"
@@ -54,7 +74,7 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={2}
           >
-            {state.drivers && <DriverDisplay />}
+            {state.drivers && <DriverDisplay drivers={state.drivers} />}
             {driver && <PassengerDisplay drivers={state.drivers} />}
           </Stack>
         </Stack>
