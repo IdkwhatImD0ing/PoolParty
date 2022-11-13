@@ -4,18 +4,9 @@ import {
   Stack,
   Button,
   TextField,
-  Paper,
   Grid,
-  styled,
 } from '@mui/material';
 
-const Item = styled(Paper)(({theme}) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 export default function AddDriver(props) {
   const [driverName, setDriverName] = useState('');
@@ -74,7 +65,6 @@ export default function AddDriver(props) {
         <Typography variant="h1">Add a Driver</Typography>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="driverName"
                 label="Driver Name"
@@ -83,10 +73,8 @@ export default function AddDriver(props) {
                 onChange={(e) => setDriverName(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="driverContact"
                 label="Driver Contact"
@@ -95,11 +83,9 @@ export default function AddDriver(props) {
                 onChange={(e) => setDriverContact(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
 
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="driverPickup"
                 label="Driver Pickup Location"
@@ -108,11 +94,9 @@ export default function AddDriver(props) {
                 onChange={(e) => setDriverPickup(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
 
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="color"
                 label="Car Color"
@@ -121,11 +105,9 @@ export default function AddDriver(props) {
                 onChange={(e) => setColor(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
 
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="make"
                 label="Car Make"
@@ -134,11 +116,9 @@ export default function AddDriver(props) {
                 onChange={(e) => setMake(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
 
           <Grid item xs={6}>
-            <Item>
               <TextField
                 id="groupName"
                 label="Group Name"
@@ -147,11 +127,9 @@ export default function AddDriver(props) {
                 onChange={(e) => setGroupName(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
 
           <Grid item xs={12}>
-            <Item>
               <TextField
                 id="seats"
                 label="Number of Seats"
@@ -160,7 +138,6 @@ export default function AddDriver(props) {
                 onChange={(e) => setSeats(e.target.value)}
                 fullWidth
               />
-            </Item>
           </Grid>
         </Grid>
 
