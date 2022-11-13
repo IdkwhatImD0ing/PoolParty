@@ -1,8 +1,9 @@
-import React from "react";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import CircleIcon from "@mui/icons-material/Circle";
-import AddIcon from "@mui/icons-material/Add";
-import PlaceIcon from "@mui/icons-material/Place";
+import React from 'react';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import CircleIcon from '@mui/icons-material/Circle';
+import AddIcon from '@mui/icons-material/Add';
+import PlaceIcon from '@mui/icons-material/Place';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import {
   List,
@@ -13,48 +14,59 @@ import {
   Divider,
   ListSubheader,
   Typography,
-} from "@mui/material";
-import { Stack } from "@mui/system";
+  IconButton,
+} from '@mui/material';
+import {Stack} from '@mui/system';
 
 export default function CarDisplay(props) {
   const driver = props.driver;
 
   const carEmpty = (driver) => {
-    return driver["remainingCapacity"] === driver["capacity"];
+    return driver['remainingCapacity'] === driver['capacity'];
   };
 
   const carNotFull = (driver) => {
-    return driver["remainingCapacity"] > 0;
+    return driver['remainingCapacity'] > 0;
   };
 
   const getIconColor = (driver) => {
-    return carNotFull(driver) ? "success.main" : "error.main";
+    return carNotFull(driver) ? 'success.main' : 'error.main';
+  };
+
+  const handleSubmit = (driverUUID, passengerUUID) => {
+    fetch('http://localhost:3001/removeFromCar', {
+      headers: {
+        channelId: props.channelId,
+        passengerUUID: passengerUUID,
+        driverUUID: driverUUID,
+      },
+    });
   };
 
   return (
     <List
       dense
       sx={{
-        width: "100%",
+        width: '100%',
         maxWidth: 360,
         minWidth: 250,
-        bgcolor: "background.paper",
-        borderRadius: "16px",
-        padding: "2%",
+        bgcolor: 'background.paper',
+        borderRadius: '16px',
+        padding: '2%',
       }}
       subheader={
         <ListSubheader
           component="div"
           id="nested-list-subheader"
-          sx={{ borderRadius: "16px" }}
+          sx={{borderRadius: '16px'}}
         >
           <Typography variant="h6">
             {`${driver.groupName} - 
-             ${driver.color ? driver.color : ""}
-             ${driver.make ? " " + driver.make : ""}`}
+             ${driver.color ? driver.color : ''}
+             ${driver.make ? ' ' + driver.make : ''}`}
           </Typography>
           <Stack direction="row" alignItems="center" spacing={1}>
-            <CircleIcon sx={{ color: getIconColor(driver) }} />
+            <CircleIcon sx={{color: getIconColor(driver)}} />
             <Typography variant="h8">
               {`${driver.capacity - driver.remainingCapacity}/${
                 driver.capacity
@@ -70,7 +82,7 @@ export default function CarDisplay(props) {
         </ListItemIcon>
         <ListItemText
           primary={driver.name}
-          primaryTypographyProps={{ variant: "h8" }}
+          primaryTypographyProps={{variant: 'h8'}}
           secondary={driver.contact}
         />
       </ListItem>
@@ -80,8 +92,8 @@ export default function CarDisplay(props) {
         </ListItemIcon>
         <ListItemText
           primary={driver.pickup}
-          primaryTypographyProps={{ variant: "h8" }}
-          secondary={"Pickup"}
+          primaryTypographyProps={{variant: 'h8'}}
+          secondary={'Pickup'}
         />
       </ListItem>
       <Divider />
@@ -89,11 +101,18 @@ export default function CarDisplay(props) {
         {Object.entries(driver.passengers).map(([name, passenger]) => {
           return (
             // Individual passenger
-            <ListItem sx={{ pl: 2 }}>
+            <ListItem sx={{pl: 2}}>
               <ListItemText
                 primary={passenger.name}
-                secondary={passenger.contact ? passenger.contact : ""}
+                secondary={passenger.contact ? passenger.contact : ''}
               />
+              <IconButton
+                onClick={() => {
+                  handleSubmit(driver.uuid, name);
+                }}
+              >
+                <RemoveIcon />
+              </IconButton>
             </ListItem>
           );
         })}

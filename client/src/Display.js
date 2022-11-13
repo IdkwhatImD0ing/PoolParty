@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Box, Typography, Stack, Button, Modal, Toolbar } from "@mui/material";
-import AddPassenger from "./Components/AddPassenger";
-import Error from "./Components/Error";
-import CarDisplay from "./Components/CarDisplay";
-import CombinedDisplay from "./Components/CombinedDisplay";
-import AddDriver from "./Components/AddDriver";
-import JoinPassenger from "./Components/JoinPassenger";
-import { useSearchParams } from "react-router-dom";
-import { useReadChannelState } from "@onehop/react";
+import React, {useState} from 'react';
+import {Box, Typography, Stack, Button, Modal, Toolbar} from '@mui/material';
+import AddPassenger from './Components/AddPassenger';
+import Error from './Components/Error';
+import CarDisplay from './Components/CarDisplay';
+import CombinedDisplay from './Components/CombinedDisplay';
+import AddDriver from './Components/AddDriver';
+import JoinPassenger from './Components/JoinPassenger';
+import {useSearchParams} from 'react-router-dom';
+import {useReadChannelState} from '@onehop/react';
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
@@ -23,25 +23,25 @@ export default function DisplayTrip() {
   const handlePassengerOpen2 = () => setPassengerOpen2(true);
   const handlePassengerClose2 = () => setPassengerOpen2(false);
 
-  const tripId = searchParams.get("tripId");
-  const { state } = useReadChannelState(tripId);
+  const tripId = searchParams.get('tripId');
+  const {state} = useReadChannelState(tripId);
 
   const formatDate = (date) => {
     const dateObj = new Date(date);
     const day = dateObj.getDate();
     const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ];
     const month = months[dateObj.getMonth()];
     const year = dateObj.getFullYear();
@@ -60,10 +60,10 @@ export default function DisplayTrip() {
         weight="100vw"
         overflow="auto"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundColor: "lightblue",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: 'lightblue',
         }}
       >
         <Modal
@@ -95,8 +95,8 @@ export default function DisplayTrip() {
           direction="column"
           alignItems="center"
           justifyContent="center"
-          spacing={"5vh"}
-          sx={{ mt: "5%" }}
+          spacing={'5vh'}
+          sx={{mt: '5%'}}
           maxWidth="98%"
         >
           <Typography variant="h4">Coordinate Carpool</Typography>
@@ -105,13 +105,13 @@ export default function DisplayTrip() {
             <Typography
               variant="h1"
               align="center"
-              sx={{ fontWeight: "bold", fontSize: "64px" }}
+              sx={{fontWeight: 'bold', fontSize: '64px'}}
             >
               {state.name}
             </Typography>
 
-            {state.date !== "" && (
-              <Typography variant="h6" align="center" sx={{ fontSize: "32px" }}>
+            {state.date !== '' && (
+              <Typography variant="h6" align="center" sx={{fontSize: '32px'}}>
                 {formatDate(state.date)}
               </Typography>
             )}
@@ -147,6 +147,7 @@ export default function DisplayTrip() {
                   driver={driverObject}
                   setDriverUUID={setDriverUUID}
                   handleOpen={handlePassengerOpen2}
+                  channelId={tripId}
                 />
               );
             })}
