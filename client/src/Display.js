@@ -123,8 +123,24 @@ export default function DisplayTrip() {
             justifyContent="center"
             spacing={5}
           >
-            <Button onClick={handleDriverOpen}>Add Driver</Button>
-            <Button onClick={handlePassengerOpen}>Add Passenger</Button>
+            <Button onClick={handleDriverOpen}
+            variant="contained"
+            sx={{
+              minWidth: '150px',
+              padding: '3%',
+              borderRadius: '12px',
+            }}
+            >
+              Add Driver</Button>
+            <Button onClick={handlePassengerOpen}
+            variant="contained"
+            sx={{
+              minWidth: '150px',
+              padding: '3%',
+              borderRadius: '12px',
+            }}
+            >
+              Add Passenger</Button>
           </Stack>
           <Stack
             direction="row"
