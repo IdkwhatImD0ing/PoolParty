@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Box, Typography, Stack, Button, Modal } from "@mui/material";
-import PassengerDisplay from "./Components/PassengerDisplay";
-import AddPassenger from "./Components/AddPassenger";
-import Error from "./Components/Error";
-import DriverDisplay from "./Components/DriverDisplay";
-import AddDriver from "./Components/AddDriver";
-import { useSearchParams } from "react-router-dom";
-import { useReadChannelState } from "@onehop/react";
+import React, {useState} from 'react';
+import {Box, Typography, Stack, Button, Modal} from '@mui/material';
+import PassengerDisplay from './Components/PassengerDisplay';
+import AddPassenger from './Components/AddPassenger';
+import Error from './Components/Error';
+import DriverDisplay from './Components/DriverDisplay';
+import CarDisplay from './Components/CarDisplay';
+import AddDriver from './Components/AddDriver';
+import {useSearchParams} from 'react-router-dom';
+import {useReadChannelState} from '@onehop/react';
 
 export default function DisplayTrip() {
   const [driver, setDriver] = useState(null);
@@ -18,8 +19,8 @@ export default function DisplayTrip() {
   const handlePassengerOpen = () => setPassengerOpen(true);
   const handlePassengerClose = () => setPassengerOpen(false);
 
-  const tripId = searchParams.get("tripId");
-  const { state } = useReadChannelState(tripId);
+  const tripId = searchParams.get('tripId');
+  const {state} = useReadChannelState(tripId);
 
   if (!tripId || !state) {
     return <Error />;
@@ -99,8 +100,11 @@ export default function DisplayTrip() {
             spacing={2}
           >
             {state.drivers && <DriverDisplay drivers={state.drivers} />}
-            {driver && <PassengerDisplay drivers={state.drivers} />}
+            {state.freePassengers && <PassengerDisplay passengers={state.freePassengers}/>}
           </Stack>
+          {state.drivers && Object.entries(state.drivers).map(([name, driver]) => {
+            return (<CarDisplay driver={driver} />);
+          })}
         </Stack>
       </Box>
     </>
