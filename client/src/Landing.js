@@ -24,10 +24,15 @@ export default function Landing() {
           justifyContent="center"
           spacing={3}
         >
-          <Typography variant="h1" fontFamily={'sans-serif'}>
+          <Typography variant="h1" fontFamily={'sans-serif'} align="center">
             Pool Party
           </Typography>
-          <Typography variant="h4" fontFamily={'sans-serif'} color={'#32b2b7'}>
+          <Typography
+            variant="h4"
+            fontFamily={'sans-serif'}
+            color={'#32b2b7'}
+            align="center"
+          >
             carpooling, made easy.
           </Typography>
           <Button

@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Typography,
-  Stack,
-  Button,
-  TextField,
-  Grid,
-} from '@mui/material';
-
+import {Typography, Stack, Button, TextField, Grid} from '@mui/material';
 
 export default function AddDriver(props) {
   const [driverName, setDriverName] = useState('');
@@ -53,17 +46,20 @@ export default function AddDriver(props) {
       left="50%"
       direction="column"
       alignItems="center"
+      width={window.innerWidth < 600 ? '80%' : '50%'}
       justifyContent="center"
       spacing={2}
       sx={{
-        backgroundColor: "white",
-        transform: "translate(-50%, -50%)",
-        padding: "2%",
+        backgroundColor: 'white',
+        transform: 'translate(-50%, -50%)',
+        padding: '2%',
         borderRadius: '16px',
       }}
     >
-      <Typography variant="h3">Add Driver</Typography>
-      <Grid container spacing={2}>
+      <Typography variant="h3" align="center">
+        Add Driver
+      </Typography>
+      <Grid container rowSpacing={2} columnSpacing={{xs: 1, sm: 2, md: 2}}>
         <Grid item xs={6}>
           <TextField
             id="driverName"
@@ -84,7 +80,6 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-
         <Grid item xs={6}>
           <TextField
             id="driverPickup"
@@ -95,7 +90,6 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-
         <Grid item xs={6}>
           <TextField
             id="color"
@@ -106,7 +100,6 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-
         <Grid item xs={6}>
           <TextField
             id="make"
@@ -117,7 +110,6 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-
         <Grid item xs={6}>
           <TextField
             id="groupName"
@@ -128,7 +120,6 @@ export default function AddDriver(props) {
             fullWidth
           />
         </Grid>
-
         <Grid item xs={12}>
           <TextField
             id="seats"
@@ -141,7 +132,9 @@ export default function AddDriver(props) {
         </Grid>
       </Grid>
 
-      <Button onClick={handleSubmit} variant='contained'>Submit</Button>
+      <Button onClick={handleSubmit} variant="contained">
+        Submit
+      </Button>
     </Stack>
   );
 }
